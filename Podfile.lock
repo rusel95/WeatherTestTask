@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.3.0)
+  - AlamofireObjectMapper (4.0.2):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 2.0)
   - GoogleMaps (2.2.0):
     - GoogleMaps/Maps (= 2.2.0)
   - GoogleMaps/Base (2.2.0)
@@ -16,19 +19,20 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireObjectMapper
   - GoogleMaps
   - GooglePlaces
-  - ObjectMapper
   - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireObjectMapper: 94923a4320bbe52c1d0d462093277a9d6a755a78
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   ObjectMapper: d3b3de11267f5d971f390eb8d63dd509116a4329
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
   RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
 
-PODFILE CHECKSUM: bab6173f943df3b78e811a78647ddedcbe657b01
+PODFILE CHECKSUM: c2767c4e42312e227177c87e5fb9be02dd91fe50
 
 COCOAPODS: 1.2.1
