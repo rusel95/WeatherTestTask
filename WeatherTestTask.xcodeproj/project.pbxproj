@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8464C2DB1EC0CFA9006173D7 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464C2DA1EC0CFA9006173D7 /* Weather.swift */; };
 		848548A41EC09FBA00909BBA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848548A31EC09FBA00909BBA /* Place.swift */; };
 		848548A91EC0B4CA00909BBA /* HelperInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848548A81EC0B4CA00909BBA /* HelperInstance.swift */; };
 		849069EC1EBCB82A00AEA4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849069EB1EBCB82A00AEA4A5 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		676359EC7CE2AFB6EDFF594A /* Pods-WeatherTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTestTask/Pods-WeatherTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		7370075E47298C6B2BDE60A7 /* Pods-WeatherTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTestTask/Pods-WeatherTestTask.release.xcconfig"; sourceTree = "<group>"; };
+		8464C2DA1EC0CFA9006173D7 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		848548A31EC09FBA00909BBA /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		848548A81EC0B4CA00909BBA /* HelperInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperInstance.swift; sourceTree = "<group>"; };
 		849069E81EBCB82A00AEA4A5 /* WeatherTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				848548A31EC09FBA00909BBA /* Place.swift */,
+				8464C2DA1EC0CFA9006173D7 /* Weather.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8464C2DB1EC0CFA9006173D7 /* Weather.swift in Sources */,
 				849069EC1EBCB82A00AEA4A5 /* AppDelegate.swift in Sources */,
 				84906A001EBCC60E00AEA4A5 /* SearchViewController.swift in Sources */,
 				848548A91EC0B4CA00909BBA /* HelperInstance.swift in Sources */,

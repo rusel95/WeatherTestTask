@@ -17,17 +17,23 @@ class WeatherApi {
     static let shared = WeatherApi()
     private init() { }
     
-    private let apiKey = "&appid=4a069077d6974db10f255af576ef8baa"
-    private let apiCall = "http://api.openweathermap.org/data/2.5/weather"
+    
+    private let apiSkeletonUrl = "http://api.openweathermap.org/data/2.5/weather"
+    private let apiKeyUrl = "&appid=4a069077d6974db10f255af576ef8baa"
+    private let apiAccuracyUrl = "&type=accurate"
+    private let apiMetricUrl = "&units=metric"
     
     func getWeatherData(location: CLLocationCoordinate2D) {
         
-        let urlForRequest = apiCall + "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude) + apiKey
+        let locationUrl = "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
+        let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
         
         Alamofire.request(urlForRequest).validate().responseJSON { (response) in
             switch response.result {
             case .success:
                 print(response.result.value!)
+                
+                //let weather =
                 
             case .failure(let error):
                 print(error.localizedDescription, urlForRequest)
