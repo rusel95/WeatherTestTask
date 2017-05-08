@@ -17,12 +17,12 @@ class WeatherApi {
     static let shared = WeatherApi()
     private init() { }
     
-    private let apiKey = "4a069077d6974db10f255af576ef8baa"
-    private let apiCall = "http://api.openweathermap.org/data/2.5/weather?"
+    private let apiKey = "&appid=4a069077d6974db10f255af576ef8baa"
+    private let apiCall = "http://api.openweathermap.org/data/2.5/weather"
     
     func getWeatherData(location: CLLocationCoordinate2D) {
         
-        let urlForRequest = apiCall + "lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
+        let urlForRequest = apiCall + "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude) + apiKey
         
         Alamofire.request(urlForRequest).validate().responseJSON { (response) in
             switch response.result {
