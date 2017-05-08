@@ -8,6 +8,9 @@
 //OpenWeathermap.com/api
 
 import Foundation
+import Alamofire
+import ObjectMapper
+import GoogleMaps
 
 class WeatherApi {
     
@@ -15,8 +18,23 @@ class WeatherApi {
     private init() { }
     
     private let apiKey = "4a069077d6974db10f255af576ef8baa"
-    private let apiRequest = "http://api.accuweather.com/alarms/v1/1day/335315?apikey="
+    private let apiCall = "http://api.openweathermap.org/data/2.5/weather?"
     
+    func getWeatherData(location: CLLocationCoordinate2D) {
+        
+        let urlForRequest = apiCall + "lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
+        
+        Alamofire.request(urlForRequest).validate().responseJSON { (response) in
+            switch response.result {
+            case .success:
+                print(response.result.value!)
+                
+            case .failure(let error):
+                print(error.localizedDescription, urlForRequest)
+            }
+        }
+        
+    }
     
     
 }
