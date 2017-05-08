@@ -23,10 +23,26 @@ class SearchViewController: UIViewController {
         presentAutocompleteView()
     }
     
+    @IBAction func searchButton(_ sender: UIButton) {
+        if placeOutlet.text != "" {
+            self.performSegue(withIdentifier: "ShowSearchResult", sender: currentPlace)
+        } else {
+            HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self, controllerToDismiss: self.navigationController!)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowSearchResult" {
+            if let SearchResultVC = segue.destination as? ResultViewController {
+                SearchResultVC.placeForWeather = sender as! Place
+            }
+        }
     }
     
     private func presentAutocompleteView() {
@@ -42,9 +58,9 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place address: \(String(describing: place.formattedAddress))")
-        print("Place coordinate: \(String(describing: place.coordinate))")
+//        print("Place name: \(place.name)")
+//        print("Place address: \(String(describing: place.formattedAddress))")
+//        print("Place coordinate: \(String(describing: place.coordinate))")
         
         currentPlace = Place(name: place.name, address: place.formattedAddress!, location: place.coordinate)
         

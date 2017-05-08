@@ -8,15 +8,40 @@
 //OpenWeathermap.com/api
 
 import Foundation
+import Alamofire
+import AlamofireObjectMapper
+import GoogleMaps
 
 class WeatherApi {
     
     static let shared = WeatherApi()
     private init() { }
     
-    private let apiKey = "4a069077d6974db10f255af576ef8baa"
-    private let apiRequest = "http://api.accuweather.com/alarms/v1/1day/335315?apikey="
     
+    private let apiSkeletonUrl = "http://api.openweathermap.org/data/2.5/weather"
+    private let apiKeyUrl = "&appid=4a069077d6974db10f255af576ef8baa"
+    private let apiAccuracyUrl = "&type=accurate"
+    private let apiMetricUrl = "&units=metric"
+    
+    func getWeatherData(location: CLLocationCoordinate2D) {
+        
+        let locationUrl = "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
+        let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
+                
+        Alamofire.request(urlForRequest).responseObject { (response: DataResponse<WeatherResponse>) in
+            
+            switch response.result {
+            
+            case .success:
+                let weatherResponse = response.result.value!
+                print(weatherResponse)
+                
+            case .failure(let error):
+                print(error.localizedDescription, urlForRequest)
+            }
+        }
+        
+    }
     
     
 }

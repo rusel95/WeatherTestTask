@@ -8,7 +8,7 @@ target 'WeatherTestTask' do
   # Pods for WeatherTestTask
 	pod 'RealmSwift'
 	pod 'Alamofire'
-	pod 'ObjectMapper'
+	pod 'AlamofireObjectMapper'
 	pod 'GoogleMaps’
   	pod 'GooglePlaces'
 end
