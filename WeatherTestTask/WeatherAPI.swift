@@ -9,7 +9,7 @@
 
 import Foundation
 import Alamofire
-import ObjectMapper
+import AlamofireObjectMapper
 import GoogleMaps
 
 class WeatherApi {
@@ -27,13 +27,14 @@ class WeatherApi {
         
         let locationUrl = "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
         let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
-        
-        Alamofire.request(urlForRequest).validate().responseJSON { (response) in
-            switch response.result {
-            case .success:
-                print(response.result.value!)
                 
-                //let weather =
+        Alamofire.request(urlForRequest).responseObject { (response: DataResponse<WeatherResponse>) in
+            
+            switch response.result {
+            
+            case .success:
+                let weatherResponse = response.result.value!
+                print(weatherResponse)
                 
             case .failure(let error):
                 print(error.localizedDescription, urlForRequest)
