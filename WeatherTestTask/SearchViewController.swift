@@ -11,6 +11,12 @@ import GooglePlaces
 
 class SearchViewController: UIViewController {
 
+    fileprivate var currentPlace : Place! {
+        didSet {
+            placeOutlet.text = currentPlace.address
+        }
+    }
+    
     @IBOutlet weak var placeOutlet: UITextField!
     
     @IBAction func placeAction(_ sender: UITextField) {
@@ -38,8 +44,10 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(place.name)")
         print("Place address: \(String(describing: place.formattedAddress))")
-        print("Place attributions: \(String(describing: place.attributions))")
-        placeOutlet.text = place.name
+        print("Place coordinate: \(String(describing: place.coordinate))")
+        
+        currentPlace = Place(name: place.name, address: place.formattedAddress!, location: place.coordinate)
+        
         dismiss(animated: true, completion: nil)
     }
     
