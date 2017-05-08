@@ -12,10 +12,10 @@ import GooglePlaces
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var placeOutlet: UITextField!
+    
     @IBAction func placeAction(_ sender: UITextField) {
         presentAutocompleteView()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

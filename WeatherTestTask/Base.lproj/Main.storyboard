@@ -14,7 +14,7 @@
         <scene sceneID="6CO-em-Z9j">
             <objects>
                 <navigationController id="V1w-Yf-X4W" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9V5-E1-Fmm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9V5-E1-Fmm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -195,13 +195,13 @@
                                     <segue destination="zD2-Jn-cCS" kind="show" id="MUb-oo-Nep"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
                                 <rect key="frame" x="40" y="318" width="295" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="placeAction:" destination="uWV-wg-F6k" eventType="touchUpInside" id="WWc-gW-hSd"/>
+                                    <action selector="placeAction:" destination="uWV-wg-F6k" eventType="editingDidBegin" id="09j-0l-Bk2"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -258,7 +258,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAx-JN-U7D" id="b40-7Q-AFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcP-fG-fnc">
