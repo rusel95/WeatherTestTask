@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //So this is my kinda identifier of ios app in GoogleMaps
-    GMSServices.provideAPIKey("AIzaSyB_EZxn5ma7uGtxLPPnfkIbKIpazFxKKNQ")
-    GMSPlacesClient.provideAPIKey("AIzaSyDIOmHUrqmeKHwThvrExEtpDdWbZx2DkCc")
+        GMSServices.provideAPIKey("AIzaSyB_EZxn5ma7uGtxLPPnfkIbKIpazFxKKNQ")
+        GMSPlacesClient.provideAPIKey("AIzaSyDIOmHUrqmeKHwThvrExEtpDdWbZx2DkCc")
         return true
     }
 
