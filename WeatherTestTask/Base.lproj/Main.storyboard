@@ -14,7 +14,7 @@
         <scene sceneID="6CO-em-Z9j">
             <objects>
                 <navigationController id="V1w-Yf-X4W" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9V5-E1-Fmm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9V5-E1-Fmm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="773.60000000000002" y="-293.70314842578711"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="LsG-sa-KfK">
             <objects>
-                <viewController id="zD2-Jn-cCS" sceneMemberID="viewController">
+                <viewController id="zD2-Jn-cCS" customClass="ResultViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iHX-wi-4D0"/>
                         <viewControllerLayoutGuide type="bottom" id="C10-E1-XNG"/>
@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="1624.8" y="-300"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="e4Q-hf-ZO8">
             <objects>
-                <viewController id="uWV-wg-F6k" sceneMemberID="viewController">
+                <viewController id="uWV-wg-F6k" customClass="SearchViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4FY-am-wio"/>
                         <viewControllerLayoutGuide type="bottom" id="rVb-lC-jFU"/>
@@ -200,6 +200,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="placeAction:" destination="uWV-wg-F6k" eventType="touchUpInside" id="WWc-gW-hSd"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -215,15 +218,18 @@
                             <constraint firstItem="di1-Kx-Qo7" firstAttribute="centerY" secondItem="4Hb-Am-kWK" secondAttribute="centerY" id="wJO-I3-kvD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="placeOutlet" destination="di1-Kx-Qo7" id="9pw-oQ-7KB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skI-0i-vxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2505" y="520"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="HW2-Xh-WqW">
             <objects>
-                <viewController id="fK0-MR-C6k" sceneMemberID="viewController">
+                <viewController id="fK0-MR-C6k" customClass="SettingsViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="78c-gr-PeD"/>
                         <viewControllerLayoutGuide type="bottom" id="FqY-uP-V7o"/>
@@ -252,7 +258,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAx-JN-U7D" id="b40-7Q-AFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcP-fG-fnc">
@@ -293,7 +299,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="MUb-oo-Nep"/>
-        <segue reference="OcO-qd-dpV"/>
+        <segue reference="yFD-oT-rTG"/>
         <segue reference="5ja-US-oBi"/>
     </inferredMetricsTieBreakers>
 </document>
