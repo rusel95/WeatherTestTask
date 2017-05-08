@@ -10,81 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="6CO-em-Z9j">
-            <objects>
-                <navigationController id="V1w-Yf-X4W" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9V5-E1-Fmm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="dx8-8f-xSb" kind="relationship" relationship="rootViewController" id="Cjk-0o-bpd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngh-m1-RAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-764" y="36"/>
-        </scene>
-        <!--search-->
-        <scene sceneID="Ylf-Xp-ZJT">
-            <objects>
-                <viewController id="dx8-8f-xSb" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pIO-qZ-7Fv"/>
-                        <viewControllerLayoutGuide type="bottom" id="oxb-WT-vC9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MoS-o5-HDv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="search" id="IUl-uU-akt"/>
-                    <connections>
-                        <segue destination="W8p-Js-y3M" kind="show" id="hTD-ed-te2"/>
-                        <segue destination="ULC-KT-Lwf" kind="show" id="Kcz-oV-yA3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FLg-zY-1mJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-12" y="36"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="nNS-M0-NLo">
-            <objects>
-                <viewController id="ULC-KT-Lwf" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="m7g-Am-B4Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="vEE-to-tZ9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WSf-0t-ivB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lRH-Az-8gW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="774" y="389"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="jaf-6J-g0n">
-            <objects>
-                <viewController id="W8p-Js-y3M" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="20b-Cr-8v8"/>
-                        <viewControllerLayoutGuide type="bottom" id="7dh-Ui-Zj1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1Gl-ju-jxV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xiN-am-H6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="773.60000000000002" y="-293.70314842578711"/>
-        </scene>
         <!--Result View Controller-->
         <scene sceneID="LsG-sa-KfK">
             <objects>
@@ -195,7 +120,7 @@
                                     <segue destination="zD2-Jn-cCS" kind="show" id="MUb-oo-Nep"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type your city or address" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
                                 <rect key="frame" x="40" y="318" width="295" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -258,7 +183,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAx-JN-U7D" id="b40-7Q-AFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcP-fG-fnc">
