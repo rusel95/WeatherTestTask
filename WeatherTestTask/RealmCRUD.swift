@@ -9,23 +9,46 @@
 import Foundation
 import RealmSwift
 
+class RealmPlace : Object {
+    dynamic var name = ""
+    dynamic var address = ""
+    
+    dynamic var latitude = 0.0
+    dynamic var longitude = 0.0
+
+}
+
 class RealmCRUD {
     
     static let shared = RealmCRUD()
     private init () { }
     
-    func write(someObject: Any) {
+    func write(somePlace: Place) {
+        
+        let realmPlace = RealmPlace()
+        realmPlace.name = somePlace.name!
+        realmPlace.address = somePlace.address!
+        realmPlace.latitude = (somePlace.location?.latitude)!
+        realmPlace.longitude = (somePlace.location?.longitude)!
         
         let realm = try! Realm()
         
         try! realm.write {
-            realm.add(someObject as! Object)
+            realm.add(realmPlace)
         }
     }
     
-//    func get() {
-//        let realm = try! Realm()
-////        let place =
-//    }
+    func queryRealmPlaces() -> [RealmPlace] {
+       
+        let realm = try! Realm()
+        var objects = [RealmPlace]()
+        
+        let places = realm.objects(RealmPlace.self)
+        for place in places {
+            objects.append(place)
+        }
+        
+        return objects
+    }
     
 }

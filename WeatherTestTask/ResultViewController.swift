@@ -49,8 +49,8 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        RealmCRUD.shared.write(somePlace: placeForWeather)
     }
 
 

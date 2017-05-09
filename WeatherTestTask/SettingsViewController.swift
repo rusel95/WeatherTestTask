@@ -17,14 +17,20 @@ class SettingsViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
     
+    var objects = [RealmPlace]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        objects = RealmCRUD.shared.queryRealmPlaces()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 //realm number
+        return objects.count//realm number
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
         
-        cell.cityOutlet.setTitle("SomeRealmObject", for: .normal)
+        cell.cityOutlet.setTitle(objects[indexPath.row].address, for: .normal)
         
         return cell
     }
