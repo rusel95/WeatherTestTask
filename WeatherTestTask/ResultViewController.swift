@@ -38,6 +38,8 @@ class ResultViewController: UIViewController {
                     self.humidity?.text = weatherResponse?.humidity!
                     self.sunrise?.text = weatherResponse?.sunrise
                     self.sunset?.text = weatherResponse?.sunset
+                    
+                    
                 } else {
                     HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self, controllerToDismiss: self.navigationController!)
                 }
