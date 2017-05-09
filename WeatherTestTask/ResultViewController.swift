@@ -33,6 +33,7 @@ class ResultViewController: UIViewController {
             WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
                 if weatherResponse != nil {
                     self.cityName?.text = self.placeForWeather.address
+                    self.weatherIcon.setWithImageWithKey(key: (weatherResponse?.weatherDescription)!)
                     self.temp?.text = weatherResponse?.temp!
                     self.weatherDescription?.text = weatherResponse?.weatherDescription
                     self.cloudiness?.text = weatherResponse?.cloudiness!
@@ -62,7 +63,6 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController {
     
-    
     func downloadDefaultOrLastCity() {
         if isFirstCallAfterStart == true {
             if RealmCRUD.shared.queryRealmPlacesToArray().count == 0 {
@@ -76,4 +76,5 @@ extension ResultViewController {
             }
         }
     }
+
 }
