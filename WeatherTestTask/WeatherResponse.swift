@@ -59,7 +59,9 @@ class WeatherResponse: Mappable {
         clouds  <- map["clouds"]
         self.cloudiness = String( describing: (clouds["all"] as? Int)! ) + " %"
         
-        self.visibility     <- map["visibility"]
+        var visibilityResponse = Int()
+        visibilityResponse      <- map["visibility"]
+        self.visibility = String(describing: visibilityResponse) + " m"
         
         var sys: [String : AnyObject] = [:]
         sys     <- map["sys"]

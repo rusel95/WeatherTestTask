@@ -268,7 +268,7 @@
                         <outlet property="sunrise" destination="5nU-eH-1rN" id="k11-qf-3VF"/>
                         <outlet property="sunset" destination="zAy-zO-OHY" id="t6e-eV-2N8"/>
                         <outlet property="temp" destination="RMI-D0-2Il" id="ImY-dl-m1k"/>
-                        <outlet property="visibility" destination="JLV-Gn-g0a" id="eos-KM-1Kg"/>
+                        <outlet property="visibility" destination="JLV-Gn-g0a" id="buK-aw-rO4"/>
                         <outlet property="weatherDescription" destination="K5j-Dp-VSh" id="df0-qf-fcI"/>
                         <outlet property="weatherIcon" destination="Zkv-Cb-1Tp" id="ICW-tL-hnS"/>
                         <outlet property="wind" destination="FB3-Q1-3Vc" id="MPj-BF-PZE"/>
