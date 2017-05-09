@@ -23,9 +23,9 @@ class WeatherApi {
     private let apiAccuracyUrl = "&type=accurate"
     private let apiMetricUrl = "&units=metric"
     
-    func getWeatherData(location: CLLocationCoordinate2D, giveData: @escaping (WeatherResponse?) -> Void) -> Void {
+    func getWeatherData(latitude: Double, longitude: Double, giveData: @escaping (WeatherResponse?) -> Void) -> Void {
         
-        let locationUrl = "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
+        let locationUrl = "?lat=" + String(latitude) + "&lon=" + String(longitude)
         let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
         
 //        Alamofire.request(urlForRequest).responseJSON { (response) in

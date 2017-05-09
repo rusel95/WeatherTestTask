@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchButton(_ sender: UIButton) {
         if placeOutlet.text != "" {
-            self.performSegue(withIdentifier: "ShowSearchResult", sender: currentPlace)
+            self.performSegue(withIdentifier: "SearchToResult", sender: currentPlace)
         } else {
             HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self, controllerToDismiss: self.navigationController!)
         }
@@ -34,11 +34,10 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSearchResult" {
+        if segue.identifier == "SearchToResult" {
             if let SearchResultVC = segue.destination as? ResultViewController {
                 SearchResultVC.placeForWeather = sender as! Place
             }
@@ -62,7 +61,7 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
 //        print("Place address: \(String(describing: place.formattedAddress))")
 //        print("Place coordinate: \(String(describing: place.coordinate))")
         
-        currentPlace = Place(name: place.name, address: place.formattedAddress!, location: place.coordinate)
+        currentPlace = Place(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         
         dismiss(animated: true, completion: nil)
     }
