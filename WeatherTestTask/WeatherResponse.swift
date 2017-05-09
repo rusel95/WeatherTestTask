@@ -31,7 +31,7 @@ class WeatherResponse: Mappable {
     
     var sunrise: String?
     var sunset: String?
-        
+    
     required init?(map: Map) {
         
     }
@@ -41,9 +41,9 @@ class WeatherResponse: Mappable {
         
         var main: [String : AnyObject] = [:]
         main    <- map["main"]
-        self.temp = String(describing: main["temp"] as? Double) + "℃"
-        self.pressure = String(describing: main["pressure"] as? Int) + " ㍱"
-        self.humidity = String(describing: main["humidity"] as? Int) + " %"
+        self.temp = String(describing: (main["temp"] as? Double)!) + " ℃"
+        self.pressure = String(describing: (main["pressure"] as? Int)!) + " ㍱"
+        self.humidity = String(describing: (main["humidity"] as? Int)!) + " %"
         self.tempMin = String(describing: main["pressure"] as? Double) + " ℃"
         self.tempMax = String(describing: main["pressure"] as? Double) + " ℃"
         
@@ -53,7 +53,7 @@ class WeatherResponse: Mappable {
         
         var clouds: [String : AnyObject] = [:]
         clouds  <- map["clouds"]
-        self.cloudiness = String( describing: clouds["all"] as? Int ) + " %"
+        self.cloudiness = String( describing: (clouds["all"] as? Int)! ) + " %"
         
         self.visibility     <- map["visibility"]
         

@@ -24,8 +24,24 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var sunset: UILabel!
     
     var placeForWeather = Place(name: "0", address: "0", location: CLLocationCoordinate2D(latitude: 0, longitude: 0) ) {
+        
         didSet {
-            WeatherApi.shared.getWeatherData(location: placeForWeather.location!)
+            WeatherApi.shared.getWeatherData(location: placeForWeather.location!) { weatherResponse in
+                if weatherResponse != nil {
+                    self.cityName?.text = weatherResponse?.cityName
+                    self.temp?.text = weatherResponse?.temp!
+                    self.weatherDescription?.text = weatherResponse?.weatherDescription
+                    self.cloudiness?.text = weatherResponse?.cloudiness!
+                    self.wind?.text = weatherResponse?.windSpeed
+                    self.visibility?.text = weatherResponse?.visibility
+                    self.barometer?.text = weatherResponse?.pressure!
+                    self.humidity?.text = weatherResponse?.humidity!
+                    self.sunrise?.text = weatherResponse?.sunrise
+                    self.sunset?.text = weatherResponse?.sunset
+                } else {
+                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self, controllerToDismiss: self.navigationController!)
+                }
+            }
         }
     }
     
