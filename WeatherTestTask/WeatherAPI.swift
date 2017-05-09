@@ -23,21 +23,26 @@ class WeatherApi {
     private let apiAccuracyUrl = "&type=accurate"
     private let apiMetricUrl = "&units=metric"
     
-    func getWeatherData(location: CLLocationCoordinate2D) {
+    func getWeatherData(location: CLLocationCoordinate2D, giveData: @escaping (WeatherResponse?) -> Void) -> Void {
         
         let locationUrl = "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
         let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
-                
+        
+//        Alamofire.request(urlForRequest).responseJSON { (response) in
+//           print(response.result.value)
+//        }
+        
         Alamofire.request(urlForRequest).responseObject { (response: DataResponse<WeatherResponse>) in
             
             switch response.result {
             
             case .success:
                 let weatherResponse = response.result.value!
-                print(weatherResponse)
+                giveData(weatherResponse)
                 
             case .failure(let error):
                 print(error.localizedDescription, urlForRequest)
+                giveData(nil)
             }
         }
         
