@@ -10,10 +10,6 @@ import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cityOutlet: UIButton!
-    
-    @IBAction func cityAction(_ sender: UIButton) {
-        print("do something")
-    }
+    @IBOutlet weak var cityNameOutlet: UILabel!
     
 }

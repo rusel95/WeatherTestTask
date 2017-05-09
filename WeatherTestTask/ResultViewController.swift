@@ -9,8 +9,10 @@
 import UIKit
 import GoogleMaps
 
-class ResultViewController: UIViewController {
+fileprivate var isFirstCallAfterStart = true
 
+class ResultViewController: UIViewController {
+    
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var temp: UILabel!
@@ -22,6 +24,8 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
+
+    fileprivate let defaultPlace = Place(name: "Dnipro", address: "Dnipro", latitude: 48.45, longitude: 34.983)
     
     var placeForWeather = Place(name: "", address: "", latitude: 0.0, longitude: 0.0) {
         
@@ -39,7 +43,8 @@ class ResultViewController: UIViewController {
                     self.sunrise?.text = weatherResponse?.sunrise
                     self.sunset?.text = weatherResponse?.sunset
                     
-                    
+                    //add place to realm
+                    RealmCRUD.shared.write(somePlace: self.placeForWeather)
                 } else {
                     HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self, controllerToDismiss: self.navigationController!)
                 }
@@ -50,9 +55,25 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if placeForWeather.name != "" {
-            RealmCRUD.shared.write(somePlace: placeForWeather)
+        downloadDefaultOrLastCity()
+    }
+    
+}
+
+extension ResultViewController {
+    
+    
+    func downloadDefaultOrLastCity() {
+        if isFirstCallAfterStart == true {
+            if RealmCRUD.shared.queryRealmPlacesToArray().count == 0 {
+                placeForWeather = defaultPlace
+                isFirstCallAfterStart = false
+            } else {
+                let lastRealmPlace = RealmCRUD.shared.queryRealmPlacesToArray().last
+                let lastSearchedPlace = Place(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
+                placeForWeather = lastSearchedPlace
+                isFirstCallAfterStart = false
+            }
         }
     }
-
 }

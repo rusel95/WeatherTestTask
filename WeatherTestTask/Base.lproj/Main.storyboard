@@ -256,7 +256,7 @@
                         <barButtonItem key="rightBarButtonItem" image="set3" id="M2h-OA-35L">
                             <color key="tintColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="72N-PO-idH" kind="show" identifier="SettingToResult" id="3xb-eu-hhP"/>
+                                <segue destination="72N-PO-idH" kind="show" identifier="" id="3xb-eu-hhP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -283,7 +283,7 @@
         <scene sceneID="ggd-ok-4wF">
             <objects>
                 <tableViewController id="72N-PO-idH" customClass="SettingsViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJ7-Rm-VYb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJ7-Rm-VYb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -295,28 +295,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2Z-OS-ju1">
-                                            <rect key="frame" x="24" y="9" width="272" height="41"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="0.55912341099999996" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="20"/>
-                                            <state key="normal" title="City Name">
-                                                <color key="titleColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" red="1" green="1" blue="0.28780455508474578" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="cityAction:" destination="uOn-nR-Edz" eventType="touchUpInside" id="cz6-si-Hs9"/>
-                                            </connections>
-                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-4d-c6R">
+                                            <rect key="frame" x="8" y="8" width="304" height="43"/>
+                                            <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                            <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="A2Z-OS-ju1" firstAttribute="top" secondItem="09s-F8-FtJ" secondAttribute="topMargin" constant="1" id="TDQ-vo-ENq"/>
-                                        <constraint firstItem="A2Z-OS-ju1" firstAttribute="leading" secondItem="09s-F8-FtJ" secondAttribute="leadingMargin" constant="16" id="UGq-pS-Dyk"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="A2Z-OS-ju1" secondAttribute="bottom" constant="1" id="lAV-iN-NHU"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="A2Z-OS-ju1" secondAttribute="trailing" constant="16" id="pcS-Hu-gb5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xqz-4d-c6R" secondAttribute="trailing" id="H8c-Es-fsi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xqz-4d-c6R" secondAttribute="bottom" id="JVs-YI-ZCW"/>
+                                        <constraint firstItem="xqz-4d-c6R" firstAttribute="leading" secondItem="09s-F8-FtJ" secondAttribute="leadingMargin" id="iqQ-Hx-ae4"/>
+                                        <constraint firstItem="xqz-4d-c6R" firstAttribute="top" secondItem="09s-F8-FtJ" secondAttribute="topMargin" id="yx5-T0-xoF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cityOutlet" destination="A2Z-OS-ju1" id="nYv-1K-58H"/>
+                                    <outlet property="cityNameOutlet" destination="xqz-4d-c6R" id="2yW-Kf-C7K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -326,7 +320,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="zD2-Jn-cCS" kind="show" identifier="showResult" id="Obw-67-g8w"/>
+                        <segue destination="zD2-Jn-cCS" kind="show" identifier="SettingsToResult" id="Obw-67-g8w"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eF8-7E-ohe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -367,7 +361,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zQi-HH-Z9c"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchButton:" destination="uWV-wg-F6k" eventType="touchUpInside" id="85p-iN-Uqs"/>
                                 </connections>
@@ -395,7 +389,7 @@
                     <navigationItem key="navigationItem" title="Search" id="jtc-ug-IjN"/>
                     <connections>
                         <outlet property="placeOutlet" destination="di1-Kx-Qo7" id="9pw-oQ-7KB"/>
-                        <segue destination="zD2-Jn-cCS" kind="show" identifier="ShowSearchResult" id="HTs-Zh-3Fi"/>
+                        <segue destination="zD2-Jn-cCS" kind="show" identifier="SearchToResult" id="HTs-Zh-3Fi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skI-0i-vxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +402,6 @@
         <image name="set3" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Obw-67-g8w"/>
+        <segue reference="HTs-Zh-3Fi"/>
     </inferredMetricsTieBreakers>
 </document>

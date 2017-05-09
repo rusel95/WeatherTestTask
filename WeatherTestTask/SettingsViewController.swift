@@ -35,7 +35,7 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
         
-        cell.cityOutlet.setTitle(objects[indexPath.row].address, for: .normal)
+        cell.cityNameOutlet.text = objects[indexPath.row].address
         
         return cell
     }
@@ -52,11 +52,10 @@ class SettingsViewController: UITableViewController {
         let tempPlace = Place(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
         
         self.performSegue(withIdentifier: "SettingsToResult", sender: tempPlace)
-        navigationController?.popViewController(animated: false )
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSearchResult" {
+        if segue.identifier == "SettingsToResult" {
             if let SearchResultVC = segue.destination as? ResultViewController {
                 SearchResultVC.placeForWeather = sender as! Place
             }
