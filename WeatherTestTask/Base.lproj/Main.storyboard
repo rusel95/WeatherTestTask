@@ -39,43 +39,33 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-kQ-lvd">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-kQ-lvd">
                                 <rect key="frame" x="16" y="298" width="288" height="214"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="214" id="wpf-5G-UhG"/>
-                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City &amp; Zip code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-6q-ShU">
-                                <rect key="frame" x="16" y="216" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="72" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zkv-Cb-1Tp">
-                                <rect key="frame" x="16" y="76" width="288" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="68D-ez-hwS"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zkv-Cb-1Tp">
+                                <rect key="frame" x="16" y="153" width="288" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="wM1-kQ-lvd" secondAttribute="trailing" id="09D-dO-E4P"/>
-                            <constraint firstItem="GyL-S8-Sdz" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" id="4Nq-vK-Zem"/>
-                            <constraint firstItem="GyL-S8-Sdz" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leading" id="9g4-6m-T4y"/>
-                            <constraint firstAttribute="trailing" secondItem="GyL-S8-Sdz" secondAttribute="trailing" id="B1Q-l9-mlb"/>
-                            <constraint firstItem="Zkv-Cb-1Tp" firstAttribute="top" secondItem="GyL-S8-Sdz" secondAttribute="bottom" constant="12" id="Bsi-Jc-uVV"/>
-                            <constraint firstItem="Zkv-Cb-1Tp" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="C5l-dC-u4d"/>
-                            <constraint firstItem="OAB-6q-ShU" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="JrI-5n-Ls5"/>
-                            <constraint firstItem="OAB-6q-ShU" firstAttribute="top" secondItem="Zkv-Cb-1Tp" secondAttribute="bottom" constant="12" id="T1e-fm-jZi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Zkv-Cb-1Tp" secondAttribute="trailing" id="iDn-ts-q9b"/>
-                            <constraint firstItem="wM1-kQ-lvd" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="mEj-hR-jKP"/>
-                            <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="wM1-kQ-lvd" secondAttribute="bottom" constant="12" id="pZp-nY-CLN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OAB-6q-ShU" secondAttribute="trailing" id="qaR-kf-fWc"/>
+                            <constraint firstItem="OAB-6q-ShU" firstAttribute="trailing" secondItem="Zjl-qI-p7v" secondAttribute="trailingMargin" id="J3H-iQ-mQf"/>
+                            <constraint firstItem="OAB-6q-ShU" firstAttribute="top" secondItem="GyL-S8-Sdz" secondAttribute="bottom" constant="8" id="LFS-J4-1PJ"/>
+                            <constraint firstItem="OAB-6q-ShU" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="TVd-az-bBx"/>
+                            <constraint firstItem="GyL-S8-Sdz" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" id="elL-26-yzW"/>
+                            <constraint firstItem="GyL-S8-Sdz" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leading" id="kRd-k9-UL6"/>
+                            <constraint firstAttribute="trailing" secondItem="GyL-S8-Sdz" secondAttribute="trailing" id="xyo-SB-Mv7"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -184,7 +174,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAx-JN-U7D" id="b40-7Q-AFd">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcP-fG-fnc">
@@ -226,6 +216,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="HTs-Zh-3Fi"/>
         <segue reference="OcO-qd-dpV"/>
-        <segue reference="5ja-US-oBi"/>
+        <segue reference="UIH-sw-PBX"/>
     </inferredMetricsTieBreakers>
 </document>
