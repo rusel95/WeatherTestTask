@@ -28,7 +28,7 @@ class ResultViewController: UIViewController {
         didSet {
             WeatherApi.shared.getWeatherData(location: placeForWeather.location!) { weatherResponse in
                 if weatherResponse != nil {
-                    self.cityName?.text = weatherResponse?.cityName
+                    self.cityName?.text = self.placeForWeather.address
                     self.temp?.text = weatherResponse?.temp!
                     self.weatherDescription?.text = weatherResponse?.weatherDescription
                     self.cloudiness?.text = weatherResponse?.cloudiness!

@@ -39,17 +39,21 @@ class WeatherResponse: Mappable {
     func mapping(map: Map) {
         cityName    <- map["name"]
         
+        var weather = [Any]()
+        weather     <- map["weather"]
+        self.weatherDescription = ( (weather[weather.startIndex] as! Dictionary<String, Any>)["description"] as! String )
+        
         var main: [String : AnyObject] = [:]
         main    <- map["main"]
         self.temp = String(describing: (main["temp"] as? Double)!) + " ℃"
         self.pressure = String(describing: (main["pressure"] as? Int)!) + " ㍱"
         self.humidity = String(describing: (main["humidity"] as? Int)!) + " %"
-        self.tempMin = String(describing: main["pressure"] as? Double) + " ℃"
-        self.tempMax = String(describing: main["pressure"] as? Double) + " ℃"
+        self.tempMin = String(describing: main["temp_min"] as? Double) + " ℃"
+        self.tempMax = String(describing: main["temp_max"] as? Double) + " ℃"
         
         var wind: [String : AnyObject] = [:]
         wind    <- map["wind"]
-        self.windSpeed = String(describing: Double( Int((wind["speed"] as? Double)! ) * 10) / 10.0 ) + " m/s"
+        self.windSpeed = String(describing: ( (wind["speed"])! as? Double)! ) + " m/s"
         
         var clouds: [String : AnyObject] = [:]
         clouds  <- map["clouds"]

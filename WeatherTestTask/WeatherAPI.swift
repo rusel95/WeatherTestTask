@@ -27,7 +27,11 @@ class WeatherApi {
         
         let locationUrl = "?lat=" + String(location.latitude) + "&lon=" + String(location.longitude)
         let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
-                
+        
+        Alamofire.request(urlForRequest).responseJSON { (response) in
+           print(response.result.value)
+        }
+        
         Alamofire.request(urlForRequest).responseObject { (response: DataResponse<WeatherResponse>) in
             
             switch response.result {
