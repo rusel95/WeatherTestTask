@@ -23,10 +23,10 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
-    var placeForWeather = Place(name: "0", address: "0", location: CLLocationCoordinate2D(latitude: 0, longitude: 0) ) {
+    var placeForWeather = Place(name: "", address: "", latitude: 0.0, longitude: 0.0) {
         
         didSet {
-            WeatherApi.shared.getWeatherData(location: placeForWeather.location!) { weatherResponse in
+            WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
                 if weatherResponse != nil {
                     self.cityName?.text = self.placeForWeather.address
                     self.temp?.text = weatherResponse?.temp!
@@ -50,8 +50,9 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        RealmCRUD.shared.write(somePlace: placeForWeather)
+        if placeForWeather.name != "" {
+            RealmCRUD.shared.write(somePlace: placeForWeather)
+        }
     }
-
 
 }

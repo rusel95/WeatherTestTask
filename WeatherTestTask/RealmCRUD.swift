@@ -28,8 +28,8 @@ class RealmCRUD {
         let realmPlace = RealmPlace()
         realmPlace.name = somePlace.name!
         realmPlace.address = somePlace.address!
-        realmPlace.latitude = (somePlace.location?.latitude)!
-        realmPlace.longitude = (somePlace.location?.longitude)!
+        realmPlace.latitude = (somePlace.latitude)!
+        realmPlace.longitude = (somePlace.longitude)!
         
         let realm = try! Realm()
         
@@ -38,7 +38,7 @@ class RealmCRUD {
         }
     }
     
-    func queryRealmPlaces() -> [RealmPlace] {
+    func queryRealmPlacesToArray() -> [RealmPlace] {
        
         let realm = try! Realm()
         var objects = [RealmPlace]()
@@ -49,6 +49,21 @@ class RealmCRUD {
         }
         
         return objects
+    }
+    
+    func deleteRealmPlaces(placeToDelete: RealmPlace) -> Void {
+        
+        let realm = try! Realm()
+        
+        //realm.delete(placeToDelete)
+        for place in queryRealmPlacesToArray() {
+            if place.address == placeToDelete.address {
+                try! realm.write {
+                    realm.delete(place)
+                }
+                break
+            }
+        }
     }
     
 }

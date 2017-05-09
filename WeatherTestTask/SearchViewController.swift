@@ -34,7 +34,6 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        RealmCRUD.shared.queryRealmPlaces()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +61,7 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
 //        print("Place address: \(String(describing: place.formattedAddress))")
 //        print("Place coordinate: \(String(describing: place.coordinate))")
         
-        currentPlace = Place(name: place.name, address: place.formattedAddress!, location: place.coordinate)
+        currentPlace = Place(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         
         dismiss(animated: true, completion: nil)
     }

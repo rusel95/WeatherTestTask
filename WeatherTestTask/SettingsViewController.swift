@@ -9,10 +9,10 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = "Settings"
         // Do any additional setup after loading the view.
     }
@@ -20,11 +20,16 @@ class SettingsViewController: UITableViewController {
     var objects = [RealmPlace]()
     
     override func viewWillAppear(_ animated: Bool) {
-        objects = RealmCRUD.shared.queryRealmPlaces()
+        updateUI()
+    }
+    
+    fileprivate func updateUI() {
+        objects = RealmCRUD.shared.queryRealmPlacesToArray()
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count//realm number
+        return RealmCRUD.shared.queryRealmPlacesToArray().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,5 +39,28 @@ class SettingsViewController: UITableViewController {
         
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RealmCRUD.shared.deleteRealmPlaces(placeToDelete: objects[indexPath.row])
+            updateUI()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let tempPlace = Place(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
+        
+        self.performSegue(withIdentifier: "SettingsToResult", sender: tempPlace)
+        navigationController?.popViewController(animated: false )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowSearchResult" {
+            if let SearchResultVC = segue.destination as? ResultViewController {
+                SearchResultVC.placeForWeather = sender as! Place
+            }
+        }
+    }
+    
 }

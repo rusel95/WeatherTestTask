@@ -7,17 +7,17 @@
 //
 
 import Foundation
-import GoogleMaps
-import GooglePlaces
 
 class Place {
     var name : String?
     var address: String?
-    var location: CLLocationCoordinate2D?
+    var latitude: Double?
+    var longitude: Double?
     
-    init(name: String, address: String, location: CLLocationCoordinate2D) {
+    init(name: String, address: String, latitude: Double, longitude: Double) {
         self.name = name
         self.address = address
-        self.location = location
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }

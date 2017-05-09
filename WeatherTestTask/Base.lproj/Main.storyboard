@@ -256,7 +256,7 @@
                         <barButtonItem key="rightBarButtonItem" image="set3" id="M2h-OA-35L">
                             <color key="tintColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="72N-PO-idH" kind="show" id="3xb-eu-hhP"/>
+                                <segue destination="72N-PO-idH" kind="show" identifier="SettingToResult" id="3xb-eu-hhP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
