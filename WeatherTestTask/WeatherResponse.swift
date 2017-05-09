@@ -31,7 +31,7 @@ class WeatherResponse: Mappable {
     
     var sunrise: String?
     var sunset: String?
-    
+        
     required init?(map: Map) {
         
     }
