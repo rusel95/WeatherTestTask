@@ -48,13 +48,13 @@
                                                 <rect key="frame" x="83" y="0.0" width="205" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? ℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-D0-2Il">
-                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5j-Dp-VSh">
-                                                        <rect key="frame" x="0.0" y="27" width="205" height="18"/>
+                                                        <rect key="frame" x="0.0" y="26.5" width="205" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -95,16 +95,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hvY-10-iMO">
-                                        <rect key="frame" x="0.0" y="149" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="149" width="288" height="49.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barometer:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-MU-ElK">
-                                                <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? hPa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3g-Af-Bvs">
-                                                <rect key="frame" x="148" y="0.0" width="140" height="50"/>
+                                                <rect key="frame" x="148" y="0.0" width="140" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -115,7 +115,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C0F-b3-IrH">
-                                        <rect key="frame" x="0.0" y="207" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="206.5" width="288" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfi-VT-Rjl">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
@@ -135,16 +135,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aTl-hc-ykm">
-                                        <rect key="frame" x="0.0" y="265" width="288" height="49"/>
+                                        <rect key="frame" x="0.0" y="264.5" width="288" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visibility:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp7-2i-5QB">
-                                                <rect key="frame" x="0.0" y="0.0" width="140" height="49"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLV-Gn-g0a">
-                                                <rect key="frame" x="148" y="0.0" width="140" height="49"/>
+                                                <rect key="frame" x="148" y="0.0" width="140" height="50"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -155,7 +155,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BdD-A7-Mm4">
-                                        <rect key="frame" x="0.0" y="322" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="322.5" width="288" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvM-zl-olZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
@@ -175,16 +175,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="uUj-dx-2Ie">
-                                        <rect key="frame" x="0.0" y="380" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="380.5" width="288" height="49.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPb-eO-5Cf">
-                                                <rect key="frame" x="0.0" y="33" width="144" height="17"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="144" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOx-IF-qE4">
-                                                <rect key="frame" x="144" y="33" width="144" height="17"/>
+                                                <rect key="frame" x="144" y="32.5" width="144" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -292,7 +292,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOn-nR-Edz" id="09s-F8-FtJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-4d-c6R">
@@ -334,6 +334,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HTN-86-X5p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.28780455510000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="zD2-Jn-cCS" kind="relationship" relationship="rootViewController" id="leo-G5-FcK"/>
@@ -361,7 +365,15 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zQi-HH-Z9c"/>
                                 </constraints>
-                                <state key="normal" title="Search"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="22"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="searchButton:" destination="uWV-wg-F6k" eventType="touchUpInside" id="85p-iN-Uqs"/>
                                 </connections>
@@ -402,6 +414,6 @@
         <image name="set3" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HTs-Zh-3Fi"/>
+        <segue reference="leo-G5-FcK"/>
     </inferredMetricsTieBreakers>
 </document>
