@@ -41,7 +41,7 @@ class SettingsViewController: UITableViewController {
         
     }
     
-    var objects = [RealmPlace]()
+    var objects = [Place]()
     
     override func viewWillAppear(_ animated: Bool) {
         updateUI()
@@ -73,7 +73,8 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let tempPlace = Place(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
+        let tempPlace = Place()
+        tempPlace.setPlace(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
         
         placeToGiveBack = tempPlace
         

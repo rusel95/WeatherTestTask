@@ -80,11 +80,9 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-//        print("Place name: \(place.name)")
-//        print("Place address: \(String(describing: place.formattedAddress))")
-//        print("Place coordinate: \(String(describing: place.coordinate))")
         
-        currentPlace = Place(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        currentPlace = Place()
+        currentPlace.setPlace(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         
         dismiss(animated: true, completion: nil)
     }

@@ -8,8 +8,10 @@
 
 import UIKit
 import GoogleMaps
+import RealmSwift
 
 fileprivate var isFirstCallAfterStart = true
+fileprivate var defaultPlace = Place()
 
 class ResultViewController: UIViewController, SettingsViewControllerDelegate, SearchViewControllerDelegate {
     
@@ -59,14 +61,12 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
-    fileprivate let defaultPlace = Place(name: "Dnipro", address: "Dnipro", latitude: 48.45, longitude: 34.983)
-    
-    var placeForWeather = Place(name: "", address: "", latitude: 0.0, longitude: 0.0) {
+    var placeForWeather = Place() {
         
         didSet {
             
             if HelperInstance.shared.isInternetAvailable() {
-                WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
+                WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude, longitude: placeForWeather.longitude) { weatherResponse in
                     if weatherResponse != nil {
                         self.activityIndicator?.stopAnimating()
                         
@@ -97,6 +97,8 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        defaultPlace.setPlace(name: "Dnipro", address: "Dnipropetrovska oblast", latitude: 48.4686, longitude: 35.0357)
+        
         downloadDefaultOrLastCity()
     }
     
@@ -111,7 +113,8 @@ extension ResultViewController {
                 isFirstCallAfterStart = false
             } else {
                 let lastRealmPlace = RealmCRUD.shared.queryRealmPlacesToArray().last
-                let lastSearchedPlace = Place(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
+                let lastSearchedPlace = Place()
+                    lastSearchedPlace.setPlace(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
                 placeForWeather = lastSearchedPlace
                 isFirstCallAfterStart = false
             }
