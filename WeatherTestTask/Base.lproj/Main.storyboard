@@ -37,24 +37,23 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7yO-2X-vRm">
                                         <rect key="frame" x="0.0" y="38" width="343" height="45"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01-s" translatesAutoresizingMaskIntoConstraints="NO" id="Zkv-Cb-1Tp">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="45"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01-s" translatesAutoresizingMaskIntoConstraints="NO" id="Zkv-Cb-1Tp">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="YaY-g8-ILg"/>
                                                     <constraint firstAttribute="height" constant="45" id="bxG-XA-AUX"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wwo-Mu-rb3">
-                                                <rect key="frame" x="83" y="0.0" width="260" height="45"/>
+                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="45"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? ℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-D0-2Il">
-                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="18.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? ℃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-D0-2Il">
+                                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5j-Dp-VSh">
-                                                        <rect key="frame" x="0.0" y="26.5" width="260" height="18.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5j-Dp-VSh">
+                                                        <rect key="frame" x="0.0" y="26.5" width="167.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -69,6 +68,7 @@
                                             <constraint firstAttribute="bottom" secondItem="wwo-Mu-rb3" secondAttribute="bottom" id="BKM-AB-iwI"/>
                                             <constraint firstAttribute="bottom" secondItem="Zkv-Cb-1Tp" secondAttribute="bottom" id="OdB-ie-e7B"/>
                                             <constraint firstItem="wwo-Mu-rb3" firstAttribute="top" secondItem="7yO-2X-vRm" secondAttribute="top" id="WRH-wf-zx7"/>
+                                            <constraint firstItem="Zkv-Cb-1Tp" firstAttribute="width" secondItem="wwo-Mu-rb3" secondAttribute="width" id="ieE-RA-roW"/>
                                             <constraint firstAttribute="trailing" secondItem="wwo-Mu-rb3" secondAttribute="trailing" id="lXO-Ca-gWz"/>
                                             <constraint firstItem="Zkv-Cb-1Tp" firstAttribute="leading" secondItem="7yO-2X-vRm" secondAttribute="leading" id="pWs-0p-S4J"/>
                                             <constraint firstItem="Zkv-Cb-1Tp" firstAttribute="top" secondItem="7yO-2X-vRm" secondAttribute="top" id="ysq-G0-whZ"/>
@@ -347,7 +347,7 @@
         <scene sceneID="jqP-fC-YXL">
             <objects>
                 <navigationController id="VnT-2d-dTE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HTN-86-X5p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HTN-86-X5p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.28780455510000003" alpha="1" colorSpace="calibratedRGB"/>
