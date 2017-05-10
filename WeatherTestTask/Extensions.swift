@@ -93,3 +93,18 @@ extension UILabel {
         }
     }
 }
+
+private var cornerRadiusKey : Int = 2
+extension UILabel {
+    
+    @IBInspectable var cornerRadius: Int {
+        get {
+            return cornerRadiusKey
+        }
+        set {
+            cornerRadiusKey = newValue
+            
+            self.layer.cornerRadius = CGFloat(cornerRadiusKey)
+        }
+    }
+}
