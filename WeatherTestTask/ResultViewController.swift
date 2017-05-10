@@ -13,6 +13,8 @@ fileprivate var isFirstCallAfterStart = true
 
 class ResultViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var temp: UILabel!
@@ -30,8 +32,12 @@ class ResultViewController: UIViewController {
     var placeForWeather = Place(name: "", address: "", latitude: 0.0, longitude: 0.0) {
         
         didSet {
+            //activityIndicator?.startAnimating()
+            
             WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
                 if weatherResponse != nil {
+                    self.activityIndicator?.stopAnimating()
+                    
                     self.cityName?.text = self.placeForWeather.address
                     self.weatherIcon.setWithImageWithKey(key: (weatherResponse?.weatherDescription)!)
                     self.temp?.text = weatherResponse?.temp!
@@ -74,6 +80,7 @@ extension ResultViewController {
                 placeForWeather = lastSearchedPlace
                 isFirstCallAfterStart = false
             }
+            
         }
     }
 
