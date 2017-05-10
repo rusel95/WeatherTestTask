@@ -41,19 +41,14 @@ class SettingsViewController: UITableViewController {
         
     }
     
-    var objects = [Place]()
+    fileprivate var objects = [Place]()
     
     override func viewWillAppear(_ animated: Bool) {
-        updateUI()
-    }
-    
-    fileprivate func updateUI() {
         objects = RealmCRUD.shared.queryRealmPlacesToArray()
-        tableView.reloadData()
     }
-    
+        
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RealmCRUD.shared.queryRealmPlacesToArray().count
+        return objects.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +62,8 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             RealmCRUD.shared.deleteRealmPlaces(placeToDelete: objects[indexPath.row])
-            updateUI()
+            objects.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
