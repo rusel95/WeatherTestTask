@@ -90,7 +90,6 @@ extension SettingsViewController {
     fileprivate func getWeather(in place: Place, from cell: SettingsTableViewCell) {
         
         cell.cityNameOutlet.text = place.address
-        
         cell.activityIndicator.startAnimating()
         WeatherApi.shared.getWeatherData(latitude: place.latitude, longitude: place.longitude) { weatherResponse in
             

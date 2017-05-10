@@ -288,15 +288,21 @@
                                     <constraint firstItem="uUj-dx-2Ie" firstAttribute="width" secondItem="YwO-Zm-93v" secondAttribute="width" id="tui-xy-DHy"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V97-DJ-hRJ">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="cte-Qu-XJX" secondAttribute="bottom" id="0AE-H6-oQM"/>
+                            <constraint firstItem="V97-DJ-hRJ" firstAttribute="centerX" secondItem="Zjl-qI-p7v" secondAttribute="centerX" id="BgT-K9-gA8"/>
                             <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="4cn-BS-HxS" secondAttribute="bottom" constant="8" id="Dt0-g7-kuz"/>
                             <constraint firstItem="4cn-BS-HxS" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="NpO-GF-r3x"/>
                             <constraint firstItem="4cn-BS-HxS" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" constant="8" id="O1N-gZ-0x9"/>
                             <constraint firstAttribute="trailing" secondItem="cte-Qu-XJX" secondAttribute="trailing" id="cuk-JC-ea7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4cn-BS-HxS" secondAttribute="trailing" id="d7G-vX-S2G"/>
+                            <constraint firstItem="V97-DJ-hRJ" firstAttribute="centerY" secondItem="Zjl-qI-p7v" secondAttribute="centerY" id="eUq-W8-J77"/>
                             <constraint firstItem="cte-Qu-XJX" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leading" id="mM0-y0-UOM"/>
                             <constraint firstItem="cte-Qu-XJX" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" id="rV1-xr-hDi"/>
                         </constraints>
@@ -320,6 +326,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="V97-DJ-hRJ" id="QdD-EW-Gg8"/>
                         <outlet property="barometer" destination="o3g-Af-Bvs" id="Qm2-Ak-ebR"/>
                         <outlet property="cityName" destination="OAB-6q-ShU" id="79K-VK-wDL"/>
                         <outlet property="cloudiness" destination="zYF-ab-JRB" id="ppK-qe-iOU"/>
@@ -400,7 +407,7 @@
         <scene sceneID="jqP-fC-YXL">
             <objects>
                 <navigationController id="VnT-2d-dTE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HTN-86-X5p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HTN-86-X5p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.28780455510000003" alpha="1" colorSpace="calibratedRGB"/>
