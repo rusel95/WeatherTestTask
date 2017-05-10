@@ -383,10 +383,10 @@
                                     <action selector="searchButton:" destination="uWV-wg-F6k" eventType="touchUpInside" id="85p-iN-Uqs"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type your city or address" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type your city or address" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
                                 <rect key="frame" x="40" y="269" width="240" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="placeAction:" destination="uWV-wg-F6k" eventType="editingDidBegin" id="09j-0l-Bk2"/>
@@ -419,6 +419,6 @@
         <image name="set3" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Obw-67-g8w"/>
+        <segue reference="HTs-Zh-3Fi"/>
     </inferredMetricsTieBreakers>
 </document>
