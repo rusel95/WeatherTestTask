@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
         if placeOutlet.text != "" {
             self.performSegue(withIdentifier: "SearchToResult", sender: currentPlace)
         } else {
-            HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self, controllerToDismiss: self.navigationController!)
+            HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self)
         }
     }
     

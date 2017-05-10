@@ -47,7 +47,7 @@ class ResultViewController: UIViewController {
                     //add place to realm
                     RealmCRUD.shared.write(somePlace: self.placeForWeather)
                 } else {
-                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self, controllerToDismiss: self.navigationController!)
+                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
                 }
             }
         }
