@@ -37,9 +37,9 @@ class RealmCRUD {
     
     func queryRealmPlacesToArray() -> [Place] {
         
-        let realm = try! Realm()
         var objects = [Place]()
         
+        let realm = try! Realm()
         let places = realm.objects(Place.self)
         for place in places {
             objects.append(place)
