@@ -35,6 +35,8 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
         print("deinit_ResultViewController")
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
         searchVC.delegate = self
@@ -59,12 +61,10 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
-    var placeForWeather = Place()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        defaultPlace.setPlace(name: "Dnipro", address: "Dnipropetrovska oblast", latitude: 48.4686, longitude: 35.0357)
+        
         
         downloadDefaultOrLastCity()
     }
@@ -73,19 +73,36 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
 
 extension ResultViewController {
     
-    func downloadDefaultOrLastCity() {
+    fileprivate func downloadDefaultOrLastCity() {
+        
+        defaultPlace.setPlace(name: "Dnipro", address: "Dnipropetrovska oblast", latitude: 48.4686, longitude: 35.0357)
+        
         if isFirstCallAfterStart == true {
             if RealmCRUD.shared.queryRealmPlacesToArray().count == 0 {
-                placeForWeather = defaultPlace
+                getWeather(in: defaultPlace)
                 isFirstCallAfterStart = false
             } else {
                 let lastRealmPlace = RealmCRUD.shared.queryRealmPlacesToArray().last
                 let lastSearchedPlace = Place()
                     lastSearchedPlace.setPlace(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
-                placeForWeather = lastSearchedPlace
+                getWeather(in: lastSearchedPlace)
                 isFirstCallAfterStart = false
             }
+        }
+    }
+    
+    fileprivate func getWeather(in place: Place) {
+        
+        self.activityIndicator.startAnimating()
+        WeatherApi.shared.getWeatherData(latitude: place.latitude, longitude: place.longitude) { weatherResponse in
             
+            self.activityIndicator.stopAnimating()
+            if weatherResponse != nil {
+                RealmCRUD.shared.write(somePlace: place)
+                self.fillViewWith(weather: weatherResponse!)
+            } else {
+                HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+            }
         }
     }
     
@@ -95,13 +112,13 @@ extension ResultViewController {
         self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
         self.temp?.text = weather.temp!
         self.weatherDescription?.text = weather.weatherDescription
-        self.cloudiness?.text = weather.cloudiness!
-        self.wind?.text = weather.windSpeed
-        self.visibility?.text = weather.visibility
-        self.barometer?.text = weather.pressure!
-        self.humidity?.text = weather.humidity!
-        self.sunrise?.text = weather.sunrise
-        self.sunset?.text = weather.sunset
+        self.cloudiness?.text = "Cloudiness: " + weather.cloudiness!
+        self.wind?.text = "Wind: " + weather.windSpeed!
+        self.visibility?.text = "Visibility: " + weather.visibility!
+        self.barometer?.text = "Barometer: " + weather.pressure!
+        self.humidity?.text = "Humidity: " + weather.humidity!
+        self.sunrise?.text = "Sunrise: " + weather.sunrise!
+        self.sunset?.text = "Sunset: " + weather.sunset!
     }
     
 }
