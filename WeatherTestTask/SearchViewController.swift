@@ -34,11 +34,7 @@ class SearchViewController: UIViewController {
         print("deinit_SearchViewController")
     }
     
-    fileprivate var currentPlace : Place! {
-        didSet {
-            placeOutlet.text = currentPlace.address
-        }
-    }
+    fileprivate var currentPlace = Place()
     
     @IBOutlet weak var placeOutlet: UITextField!
     
@@ -81,8 +77,8 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        currentPlace = Place()
         currentPlace.setPlace(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        placeOutlet.text = currentPlace.address
         
         dismiss(animated: true, completion: nil)
     }
