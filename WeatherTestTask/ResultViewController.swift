@@ -112,13 +112,13 @@ extension ResultViewController {
         self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
         self.temp?.text = weather.temp!
         self.weatherDescription?.text = weather.weatherDescription
-        self.cloudiness?.text = weather.cloudiness!
-        self.wind?.text = weather.windSpeed
-        self.visibility?.text = weather.visibility
-        self.barometer?.text = weather.pressure!
-        self.humidity?.text = weather.humidity!
-        self.sunrise?.text = weather.sunrise
-        self.sunset?.text = weather.sunset
+        self.cloudiness?.text = "Cloudiness: " + weather.cloudiness!
+        self.wind?.text = "Wind: " + weather.windSpeed!
+        self.visibility?.text = "Visibility: " + weather.visibility!
+        self.barometer?.text = "Barometer: " + weather.pressure!
+        self.humidity?.text = "Humidity: " + weather.humidity!
+        self.sunrise?.text = "Sunrise: " + weather.sunrise!
+        self.sunset?.text = "Sunset: " + weather.sunset!
     }
     
 }

@@ -51,7 +51,6 @@ extension UIImageView {
 }
 
 private var materialKey = false
-
 extension UIView {
     
     @IBInspectable var materialDesign: Bool {
@@ -77,5 +76,20 @@ extension UIView {
             }
         }
         
+    }
+}
+
+private var masksToBoundsKey = false
+extension UILabel {
+    
+    @IBInspectable var masksToBounds: Bool {
+        get {
+            return masksToBoundsKey
+        }
+        set {
+            masksToBoundsKey = newValue
+            
+            self.layer.masksToBounds = masksToBoundsKey
+        }
     }
 }
