@@ -9,13 +9,13 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate {
-    func doSomething(with place: Place)
+    func doSomething(with weather: WeatherResponse)
 }
 
 class SettingsViewController: UITableViewController {
     
     var delegate: SettingsViewControllerDelegate?
-    var placeToGiveBack : Place?
+    var weatherToGiveBack : WeatherResponse?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -72,15 +72,29 @@ class SettingsViewController: UITableViewController {
         let tempPlace = Place()
         tempPlace.setPlace(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
         
-        placeToGiveBack = tempPlace
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
         
-        self.navigationController?.popViewController(animated: true)
+        cell.activityIndicator.startAnimating()
+        WeatherApi.shared.getWeatherData(latitude: tempPlace.latitude, longitude: tempPlace.longitude) { weatherResponse in
+            
+            cell.activityIndicator.stopAnimating()
+            
+            if weatherResponse != nil {
+                //self.activityIndicator?.stopAnimating()
+                self.weatherToGiveBack = weatherResponse
+                self.navigationController?.popViewController(animated: true)
+                
+            } else {
+                HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+            }
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if placeToGiveBack != nil {
-            self.delegate?.doSomething(with: placeToGiveBack!)
+        if weatherToGiveBack != nil {
+            self.delegate?.doSomething(with: weatherToGiveBack!)
         }
     }
 }

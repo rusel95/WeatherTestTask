@@ -16,12 +16,7 @@ fileprivate var defaultPlace = Place()
 class ResultViewController: UIViewController, SettingsViewControllerDelegate, SearchViewControllerDelegate {
     
     func doSomething(with weather: WeatherResponse) {
-        //placeForWeather = place
         fillViewWith(weather: weather)
-    }
-    
-    func doSomething(with place: Place) {
-        
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

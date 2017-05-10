@@ -53,7 +53,6 @@ class SearchViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 
                 if weatherResponse != nil {
-                    //self.activityIndicator?.stopAnimating()
                     //add place to realm
                     RealmCRUD.shared.write(somePlace: self.currentPlace)
                     self.weatherToGiveBack = weatherResponse
