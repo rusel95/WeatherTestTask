@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    func doSomething(with place: Place)
+}
+
 class SettingsViewController: UITableViewController {
+    
+    var delegate: SettingsViewControllerDelegate?
+    var placeToGiveBack : Place?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,7 +38,7 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Settings"
-        // Do any additional setup after loading the view.
+        
     }
     
     var objects = [RealmPlace]()
@@ -68,15 +75,15 @@ class SettingsViewController: UITableViewController {
         
         let tempPlace = Place(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
         
-        //self.performSegue(withIdentifier: "SettingsToResult", sender: tempPlace)
+        placeToGiveBack = tempPlace
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "SettingsToResult" {
-//            if let SearchResultVC = segue.destination as? ResultViewController {
-//                SearchResultVC.placeForWeather = sender as! Place
-//            }
-//        }
-//    }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if placeToGiveBack != nil {
+            self.delegate?.doSomething(with: placeToGiveBack!)
+        }
+    }
 }

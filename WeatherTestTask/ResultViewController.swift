@@ -11,7 +11,11 @@ import GoogleMaps
 
 fileprivate var isFirstCallAfterStart = true
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, SettingsViewControllerDelegate, SearchViewControllerDelegate {
+    
+    func doSomething(with place: Place) {
+        placeForWeather = place
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -33,11 +37,13 @@ class ResultViewController: UIViewController {
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
+        searchVC.delegate = self
         navigationController?.pushViewController(searchVC, animated: true)
     }
     
     @IBAction func settingsButton(_ sender: UIBarButtonItem) {
         let settingsVC = self.storyboard?.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
+        settingsVC.delegate = self
         navigationController?.pushViewController(settingsVC, animated: true)
     }
     

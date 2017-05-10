@@ -9,8 +9,15 @@
 import UIKit
 import GooglePlaces
 
+protocol SearchViewControllerDelegate {
+    func doSomething(with place: Place)
+}
+
 class SearchViewController: UIViewController {
 
+    var delegate: SearchViewControllerDelegate?
+    var placeToGiveBack : Place?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -41,7 +48,8 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchButton(_ sender: UIButton) {
         if placeOutlet.text != "" {
-            //self.performSegue(withIdentifier: "SearchToResult", sender: currentPlace)
+            placeToGiveBack = currentPlace
+            self.navigationController?.popViewController(animated: true)
         } else {
             HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self)
         }
@@ -52,13 +60,12 @@ class SearchViewController: UIViewController {
 
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "SearchToResult" {
-//            if let SearchResultVC = segue.destination as? ResultViewController {
-//                SearchResultVC.placeForWeather = sender as! Place
-//            }
-//        }
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if placeToGiveBack != nil {
+            self.delegate?.doSomething(with: placeToGiveBack!)
+        }
+    }
     
     private func presentAutocompleteView() {
         let acController = GMSAutocompleteViewController()
