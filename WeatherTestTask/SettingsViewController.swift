@@ -10,6 +10,23 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        print("Init_SettingsViewController")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        print("Init_SettingsViewController")
+    }
+    
+    
+    deinit {
+        print("deinit_SettingsViewController")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,15 +68,15 @@ class SettingsViewController: UITableViewController {
         
         let tempPlace = Place(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
         
-        self.performSegue(withIdentifier: "SettingsToResult", sender: tempPlace)
+        //self.performSegue(withIdentifier: "SettingsToResult", sender: tempPlace)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SettingsToResult" {
-            if let SearchResultVC = segue.destination as? ResultViewController {
-                SearchResultVC.placeForWeather = sender as! Place
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "SettingsToResult" {
+//            if let SearchResultVC = segue.destination as? ResultViewController {
+//                SearchResultVC.placeForWeather = sender as! Place
+//            }
+//        }
+//    }
     
 }

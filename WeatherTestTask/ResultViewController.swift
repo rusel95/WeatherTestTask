@@ -13,7 +13,33 @@ fileprivate var isFirstCallAfterStart = true
 
 class ResultViewController: UIViewController {
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        print("Init_ResultViewController")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        print("Init_ResultViewController")
+    }
+    
+    deinit {
+        print("deinit_ResultViewController")
+    }
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBAction func searchButton(_ sender: UIBarButtonItem) {
+        let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
+        navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
+    @IBAction func settingsButton(_ sender: UIBarButtonItem) {
+        let settingsVC = self.storyboard?.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
     
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!

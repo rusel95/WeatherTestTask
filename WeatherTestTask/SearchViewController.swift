@@ -11,6 +11,22 @@ import GooglePlaces
 
 class SearchViewController: UIViewController {
 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        print("Init_SearchViewController")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        print("Init_SearchViewController")
+    }
+ 
+    deinit {
+        print("deinit_SearchViewController")
+    }
+    
     fileprivate var currentPlace : Place! {
         didSet {
             placeOutlet.text = currentPlace.address
@@ -25,7 +41,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchButton(_ sender: UIButton) {
         if placeOutlet.text != "" {
-            self.performSegue(withIdentifier: "SearchToResult", sender: currentPlace)
+            //self.performSegue(withIdentifier: "SearchToResult", sender: currentPlace)
         } else {
             HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self)
         }
@@ -36,13 +52,13 @@ class SearchViewController: UIViewController {
 
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SearchToResult" {
-            if let SearchResultVC = segue.destination as? ResultViewController {
-                SearchResultVC.placeForWeather = sender as! Place
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "SearchToResult" {
+//            if let SearchResultVC = segue.destination as? ResultViewController {
+//                SearchResultVC.placeForWeather = sender as! Place
+//            }
+//        }
+//    }
     
     private func presentAutocompleteView() {
         let acController = GMSAutocompleteViewController()
