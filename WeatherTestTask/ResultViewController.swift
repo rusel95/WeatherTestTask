@@ -64,14 +64,28 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        makeNavBarCool()
         
         downloadDefaultOrLastCity()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
     }
     
 }
 
 extension ResultViewController {
+    
+    func makeNavBarCool() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "launch1.png"), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Palatino", size: 20)!,
+                                                                         NSForegroundColorAttributeName: UIColor(red: 87, green: 143, blue: 220, alpha: 1) ]
+    }
     
     fileprivate func downloadDefaultOrLastCity() {
         
@@ -110,8 +124,7 @@ extension ResultViewController {
         
         self.cityName?.text = weather.cityName
         self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
-        self.temp?.text = weather.temp!
-        self.weatherDescription?.text = weather.weatherDescription
+        self.temp?.text = weather.temp! + "\n" + weather.weatherDescription!
         self.cloudiness?.text = "Cloudiness: " + weather.cloudiness!
         self.wind?.text = "Wind: " + weather.windSpeed!
         self.visibility?.text = "Visibility: " + weather.visibility!
