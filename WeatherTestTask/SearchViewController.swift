@@ -45,24 +45,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchButton(_ sender: UIButton) {
         if placeOutlet.text != "" {
-            //placeToGiveBack = currentPlace
-            
-            self.activityIndicator.startAnimating()
-            WeatherApi.shared.getWeatherData(latitude: currentPlace.latitude, longitude: currentPlace.longitude) { weatherResponse in
-                
-                self.activityIndicator.stopAnimating()
-                
-                if weatherResponse != nil {
-                    //add place to realm
-                    RealmCRUD.shared.write(somePlace: self.currentPlace)
-                    self.weatherToGiveBack = weatherResponse
-                    self.navigationController?.popViewController(animated: true)
-                    
-                } else {
-                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
-                }
-            }
-
+            getWeather(in: currentPlace)
         } else {
             HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self)
         }
@@ -90,28 +73,22 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController {
     
-    fileprivate func getWeatherInCity(placeForWeather: Place) {
+    fileprivate func getWeather(in place: Place) {
         
-        if HelperInstance.shared.isInternetAvailable() {
+        self.activityIndicator.startAnimating()
+        WeatherApi.shared.getWeatherData(latitude: place.latitude, longitude: place.longitude) { weatherResponse in
             
-            WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude, longitude: placeForWeather.longitude) { weatherResponse in
+            self.activityIndicator.stopAnimating()
+            if weatherResponse != nil {
+                RealmCRUD.shared.write(somePlace: self.currentPlace)
+                self.weatherToGiveBack = weatherResponse
+                self.navigationController?.popViewController(animated: true)
                 
-                if weatherResponse != nil {
-                    //self.activityIndicator?.stopAnimating()
-                    //add place to realm
-                    RealmCRUD.shared.write(somePlace: placeForWeather)
-                    
-                    //self.fillViewWith(weather: weatherResponse!)
-                    
-                } else {
-                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
-                }
+            } else {
+                HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
             }
-        } else {
-            HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like there is no internet connection. Please, try to establish an internet connection!", currentView: self)
         }
     }
-
 }
 
 
