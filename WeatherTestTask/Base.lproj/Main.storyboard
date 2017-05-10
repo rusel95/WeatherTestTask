@@ -288,21 +288,15 @@
                                     <constraint firstItem="uUj-dx-2Ie" firstAttribute="width" secondItem="YwO-Zm-93v" secondAttribute="width" id="tui-xy-DHy"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TcF-lm-CNb">
-                                <rect key="frame" x="169" y="325" width="37" height="37"/>
-                                <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="cte-Qu-XJX" secondAttribute="bottom" id="0AE-H6-oQM"/>
-                            <constraint firstItem="TcF-lm-CNb" firstAttribute="centerY" secondItem="4cn-BS-HxS" secondAttribute="centerY" id="8fp-BI-WmZ"/>
                             <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="4cn-BS-HxS" secondAttribute="bottom" constant="8" id="Dt0-g7-kuz"/>
                             <constraint firstItem="4cn-BS-HxS" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="NpO-GF-r3x"/>
                             <constraint firstItem="4cn-BS-HxS" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" constant="8" id="O1N-gZ-0x9"/>
                             <constraint firstAttribute="trailing" secondItem="cte-Qu-XJX" secondAttribute="trailing" id="cuk-JC-ea7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4cn-BS-HxS" secondAttribute="trailing" id="d7G-vX-S2G"/>
-                            <constraint firstItem="TcF-lm-CNb" firstAttribute="centerX" secondItem="4cn-BS-HxS" secondAttribute="centerX" id="kjg-PT-Yyo"/>
                             <constraint firstItem="cte-Qu-XJX" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leading" id="mM0-y0-UOM"/>
                             <constraint firstItem="cte-Qu-XJX" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" id="rV1-xr-hDi"/>
                         </constraints>
@@ -326,7 +320,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="TcF-lm-CNb" id="Tke-xU-Ogy"/>
                         <outlet property="barometer" destination="o3g-Af-Bvs" id="Qm2-Ak-ebR"/>
                         <outlet property="cityName" destination="OAB-6q-ShU" id="79K-VK-wDL"/>
                         <outlet property="cloudiness" destination="zYF-ab-JRB" id="ppK-qe-iOU"/>
@@ -400,7 +393,7 @@
         <scene sceneID="jqP-fC-YXL">
             <objects>
                 <navigationController id="VnT-2d-dTE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HTN-86-X5p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HTN-86-X5p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.28780455510000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -464,13 +457,19 @@
                                     <action selector="placeAction:" destination="uWV-wg-F6k" eventType="editingDidBegin" id="09j-0l-Bk2"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QWT-EH-jl2">
+                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
+                                <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nDo-Pl-MxZ" firstAttribute="bottom" secondItem="rVb-lC-jFU" secondAttribute="top" id="7wn-ZU-EfE"/>
                             <constraint firstItem="B8I-WA-cHQ" firstAttribute="leading" secondItem="4Hb-Am-kWK" secondAttribute="leading" constant="48" id="PYU-ZJ-T3M"/>
+                            <constraint firstItem="QWT-EH-jl2" firstAttribute="centerX" secondItem="4Hb-Am-kWK" secondAttribute="centerX" id="Qvu-yB-ZJu"/>
                             <constraint firstItem="di1-Kx-Qo7" firstAttribute="leading" secondItem="4Hb-Am-kWK" secondAttribute="leadingMargin" constant="24" id="UhV-EY-aVQ"/>
                             <constraint firstItem="nDo-Pl-MxZ" firstAttribute="leading" secondItem="4Hb-Am-kWK" secondAttribute="leading" id="c55-tE-IpA"/>
+                            <constraint firstItem="QWT-EH-jl2" firstAttribute="centerY" secondItem="4Hb-Am-kWK" secondAttribute="centerY" id="cCJ-J1-4pB"/>
                             <constraint firstItem="nDo-Pl-MxZ" firstAttribute="centerX" secondItem="di1-Kx-Qo7" secondAttribute="centerX" id="geB-sO-bOw"/>
                             <constraint firstItem="nDo-Pl-MxZ" firstAttribute="top" secondItem="4FY-am-wio" secondAttribute="bottom" id="hht-Ky-2w1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="di1-Kx-Qo7" secondAttribute="trailing" constant="24" id="kgf-Ue-WVP"/>
@@ -484,6 +483,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="jtc-ug-IjN"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="QWT-EH-jl2" id="Hre-ba-eSN"/>
                         <outlet property="placeOutlet" destination="di1-Kx-Qo7" id="9pw-oQ-7KB"/>
                     </connections>
                 </viewController>

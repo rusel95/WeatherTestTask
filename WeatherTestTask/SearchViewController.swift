@@ -10,13 +10,13 @@ import UIKit
 import GooglePlaces
 
 protocol SearchViewControllerDelegate {
-    func doSomething(with place: Place)
+    func doSomething(with weather: WeatherResponse)
 }
 
 class SearchViewController: UIViewController {
 
     var delegate: SearchViewControllerDelegate?
-    var placeToGiveBack : Place?
+    var weatherToGiveBack : WeatherResponse?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -38,14 +38,32 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var placeOutlet: UITextField!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBAction func placeAction(_ sender: UITextField) {
         presentAutocompleteView()
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
         if placeOutlet.text != "" {
-            placeToGiveBack = currentPlace
-            self.navigationController?.popViewController(animated: true)
+            //placeToGiveBack = currentPlace
+            
+            self.activityIndicator.startAnimating()
+            WeatherApi.shared.getWeatherData(latitude: currentPlace.latitude, longitude: currentPlace.longitude) { weatherResponse in
+                
+                self.activityIndicator.stopAnimating()
+                
+                if weatherResponse != nil {
+                    //self.activityIndicator?.stopAnimating()
+                    //add place to realm
+                    RealmCRUD.shared.write(somePlace: self.currentPlace)
+                    self.weatherToGiveBack = weatherResponse
+                    self.navigationController?.popViewController(animated: true)
+                    
+                } else {
+                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+                }
+            }
+
         } else {
             HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self)
         }
@@ -58,8 +76,8 @@ class SearchViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if placeToGiveBack != nil {
-            self.delegate?.doSomething(with: placeToGiveBack!)
+        if weatherToGiveBack != nil {
+            self.delegate?.doSomething(with: weatherToGiveBack!)
         }
     }
     
@@ -67,6 +85,32 @@ class SearchViewController: UIViewController {
         let acController = GMSAutocompleteViewController()
         acController.delegate = self
         present(acController, animated: true, completion: nil)
+    }
+
+}
+
+extension SearchViewController {
+    
+    fileprivate func getWeatherInCity(placeForWeather: Place) {
+        
+        if HelperInstance.shared.isInternetAvailable() {
+            
+            WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude, longitude: placeForWeather.longitude) { weatherResponse in
+                
+                if weatherResponse != nil {
+                    //self.activityIndicator?.stopAnimating()
+                    //add place to realm
+                    RealmCRUD.shared.write(somePlace: placeForWeather)
+                    
+                    //self.fillViewWith(weather: weatherResponse!)
+                    
+                } else {
+                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+                }
+            }
+        } else {
+            HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like there is no internet connection. Please, try to establish an internet connection!", currentView: self)
+        }
     }
 
 }

@@ -15,8 +15,13 @@ fileprivate var defaultPlace = Place()
 
 class ResultViewController: UIViewController, SettingsViewControllerDelegate, SearchViewControllerDelegate {
     
+    func doSomething(with weather: WeatherResponse) {
+        //placeForWeather = place
+        fillViewWith(weather: weather)
+    }
+    
     func doSomething(with place: Place) {
-        placeForWeather = place
+        
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -34,8 +39,6 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     deinit {
         print("deinit_ResultViewController")
     }
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
@@ -61,11 +64,7 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
-    var placeForWeather = Place() {
-        didSet {
-            getWeatherInCity()
-        }
-    }
+    var placeForWeather = Place()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,30 +94,9 @@ extension ResultViewController {
         }
     }
     
-    fileprivate func getWeatherInCity() {
-        
-        if HelperInstance.shared.isInternetAvailable() {
-            
-            WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude, longitude: placeForWeather.longitude) { weatherResponse in
-                
-                if weatherResponse != nil {
-                    self.activityIndicator?.stopAnimating()
-                    //add place to realm
-                    RealmCRUD.shared.write(somePlace: self.placeForWeather)
-                    
-                    self.fillViewWith(weather: weatherResponse!)
-                    
-                } else {
-                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
-                }
-            }
-        } else {
-            HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like there is no internet connection. Please, try to establish an internet connection!", currentView: self)
-        }
-    }
-    
     fileprivate func fillViewWith(weather: WeatherResponse) {
-        self.cityName?.text = self.placeForWeather.address
+        
+        self.cityName?.text = weather.cityName
         self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
         self.temp?.text = weather.temp!
         self.weatherDescription?.text = weather.weatherDescription
