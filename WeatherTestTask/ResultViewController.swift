@@ -8,12 +8,44 @@
 
 import UIKit
 import GoogleMaps
+import RealmSwift
 
 fileprivate var isFirstCallAfterStart = true
+fileprivate var defaultPlace = Place()
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, SettingsViewControllerDelegate, SearchViewControllerDelegate {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func doSomething(with weather: WeatherResponse) {
+        fillViewWith(weather: weather)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        print("Init_ResultViewController")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        print("Init_ResultViewController")
+    }
+    
+    deinit {
+        print("deinit_ResultViewController")
+    }
+    
+    @IBAction func searchButton(_ sender: UIBarButtonItem) {
+        let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
+        searchVC.delegate = self
+        navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
+    @IBAction func settingsButton(_ sender: UIBarButtonItem) {
+        let settingsVC = self.storyboard?.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
+        settingsVC.delegate = self
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
     
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -27,43 +59,12 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
-    fileprivate let defaultPlace = Place(name: "Dnipro", address: "Dnipro", latitude: 48.45, longitude: 34.983)
-    
-    var placeForWeather = Place(name: "", address: "", latitude: 0.0, longitude: 0.0) {
-        
-        didSet {
-            
-            if HelperInstance.shared.isInternetAvailable() {
-                WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
-                    if weatherResponse != nil {
-                        self.activityIndicator?.stopAnimating()
-                        
-                        self.cityName?.text = self.placeForWeather.address
-                        self.weatherIcon.setWithImageWithKey(key: (weatherResponse?.weatherDescription)!)
-                        self.temp?.text = weatherResponse?.temp!
-                        self.weatherDescription?.text = weatherResponse?.weatherDescription
-                        self.cloudiness?.text = weatherResponse?.cloudiness!
-                        self.wind?.text = weatherResponse?.windSpeed
-                        self.visibility?.text = weatherResponse?.visibility
-                        self.barometer?.text = weatherResponse?.pressure!
-                        self.humidity?.text = weatherResponse?.humidity!
-                        self.sunrise?.text = weatherResponse?.sunrise
-                        self.sunset?.text = weatherResponse?.sunset
-                        
-                        //add place to realm
-                        RealmCRUD.shared.write(somePlace: self.placeForWeather)
-                    } else {
-                        HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
-                    }
-                }
-            } else {
-                HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like there is no internet connection. Please, try to establish an internet connection!", currentView: self)
-            }
-        }
-    }
+    var placeForWeather = Place()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        defaultPlace.setPlace(name: "Dnipro", address: "Dnipropetrovska oblast", latitude: 48.4686, longitude: 35.0357)
         
         downloadDefaultOrLastCity()
     }
@@ -79,12 +80,28 @@ extension ResultViewController {
                 isFirstCallAfterStart = false
             } else {
                 let lastRealmPlace = RealmCRUD.shared.queryRealmPlacesToArray().last
-                let lastSearchedPlace = Place(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
+                let lastSearchedPlace = Place()
+                    lastSearchedPlace.setPlace(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
                 placeForWeather = lastSearchedPlace
                 isFirstCallAfterStart = false
             }
             
         }
+    }
+    
+    fileprivate func fillViewWith(weather: WeatherResponse) {
+        
+        self.cityName?.text = weather.cityName
+        self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
+        self.temp?.text = weather.temp!
+        self.weatherDescription?.text = weather.weatherDescription
+        self.cloudiness?.text = weather.cloudiness!
+        self.wind?.text = weather.windSpeed
+        self.visibility?.text = weather.visibility
+        self.barometer?.text = weather.pressure!
+        self.humidity?.text = weather.humidity!
+        self.sunrise?.text = weather.sunrise
+        self.sunset?.text = weather.sunset
     }
     
 }

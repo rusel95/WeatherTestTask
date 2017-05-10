@@ -9,14 +9,14 @@
 import Foundation
 import RealmSwift
 
-class RealmPlace : Object {
-    dynamic var name = ""
-    dynamic var address = ""
-    
-    dynamic var latitude = 0.0
-    dynamic var longitude = 0.0
-    
-}
+//class RealmPlace : Object {
+//    dynamic var name = ""
+//    dynamic var address = ""
+//    
+//    dynamic var latitude = 0.0
+//    dynamic var longitude = 0.0
+//    
+//}
 
 class RealmCRUD {
     
@@ -26,26 +26,21 @@ class RealmCRUD {
     func write(somePlace: Place) {
         
         if !isExist(somePlace: somePlace) {
-            let realmPlace = RealmPlace()
-            realmPlace.name = somePlace.name!
-            realmPlace.address = somePlace.address!
-            realmPlace.latitude = (somePlace.latitude)!
-            realmPlace.longitude = (somePlace.longitude)!
             
             let realm = try! Realm()
             
             try! realm.write {
-                realm.add(realmPlace)
+                realm.add(somePlace)
             }
         }
     }
     
-    func queryRealmPlacesToArray() -> [RealmPlace] {
+    func queryRealmPlacesToArray() -> [Place] {
+        
+        var objects = [Place]()
         
         let realm = try! Realm()
-        var objects = [RealmPlace]()
-        
-        let places = realm.objects(RealmPlace.self)
+        let places = realm.objects(Place.self)
         for place in places {
             objects.append(place)
         }
@@ -57,15 +52,9 @@ class RealmCRUD {
         
         var exist = false
         
-        let realmPlace = RealmPlace()
-        realmPlace.name = somePlace.name!
-        realmPlace.address = somePlace.address!
-        realmPlace.latitude = (somePlace.latitude)!
-        realmPlace.longitude = (somePlace.longitude)!
-        
         let places = self.queryRealmPlacesToArray()
         for place in places {
-            if place.address == realmPlace.address {
+            if place.address == somePlace.address {
                 exist = true
                 break
             }
@@ -74,11 +63,10 @@ class RealmCRUD {
         return exist
     }
     
-    func deleteRealmPlaces(placeToDelete: RealmPlace) -> Void {
+    func deleteRealmPlaces(placeToDelete: Place) -> Void {
         
         let realm = try! Realm()
         
-        //realm.delete(placeToDelete)
         for place in queryRealmPlacesToArray() {
             if place.address == placeToDelete.address {
                 try! realm.write {

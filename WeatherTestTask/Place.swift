@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Place {
-    var name : String?
-    var address: String?
-    var latitude: Double?
-    var longitude: Double?
+class Place : Object  {
+    dynamic var name : String = ""
+    dynamic var address: String = ""
+    dynamic var latitude: Double = 0.0
+    dynamic var longitude: Double = 0.0
     
-    init(name: String, address: String, latitude: Double, longitude: Double) {
+    func setPlace(name: String, address: String, latitude: Double, longitude: Double) {
         self.name = name
         self.address = address
         self.latitude = latitude

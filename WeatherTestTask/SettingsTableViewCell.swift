@@ -12,4 +12,5 @@ class SettingsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityNameOutlet: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 }

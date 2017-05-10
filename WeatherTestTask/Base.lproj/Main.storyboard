@@ -22,8 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch1" translatesAutoresizingMaskIntoConstraints="NO" id="cte-Qu-XJX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-BS-HxS">
-                                <rect key="frame" x="16" y="28" width="343" height="587"/>
+                                <rect key="frame" x="16" y="72" width="343" height="543"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City &amp; Zip code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-6q-ShU">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -31,8 +34,11 @@
                                             <constraint firstAttribute="height" constant="30" id="70q-ab-Hjy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7yO-2X-vRm">
                                         <rect key="frame" x="0.0" y="38" width="343" height="45"/>
@@ -49,13 +55,13 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? ℃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-D0-2Il">
                                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5j-Dp-VSh">
                                                         <rect key="frame" x="0.0" y="26.5" width="167.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -75,19 +81,25 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YwO-Zm-93v">
-                                        <rect key="frame" x="0.0" y="91" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="91" width="343" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Cloudiness:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4v-Rc-gEp">
-                                                <rect key="frame" x="0.0" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="40.5" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYF-ab-JRB">
-                                                <rect key="frame" x="175.5" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="175.5" y="40.5" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -95,19 +107,25 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hvY-10-iMO">
-                                        <rect key="frame" x="0.0" y="163" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="156.5" width="343" height="58"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barometer:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-MU-ElK">
-                                                <rect key="frame" x="0.0" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="41" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? hPa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3g-Af-Bvs">
-                                                <rect key="frame" x="175.5" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="175.5" y="41" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -115,19 +133,25 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C0F-b3-IrH">
-                                        <rect key="frame" x="0.0" y="235" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="222.5" width="343" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfi-VT-Rjl">
-                                                <rect key="frame" x="0.0" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="40.5" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="? %" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFF-Mx-ye2">
-                                                <rect key="frame" x="175.5" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="175.5" y="40.5" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -135,19 +159,25 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aTl-hc-ykm">
-                                        <rect key="frame" x="0.0" y="307" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="288" width="343" height="58"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visibility:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zp7-2i-5QB">
-                                                <rect key="frame" x="0.0" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="41" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="? m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLV-Gn-g0a">
-                                                <rect key="frame" x="175.5" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="175.5" y="41" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -155,39 +185,54 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BdD-A7-Mm4">
-                                        <rect key="frame" x="0.0" y="379" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="354" width="343" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvM-zl-olZ">
-                                                <rect key="frame" x="0.0" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="40.5" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="? m/s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB3-Q1-3Vc">
-                                                <rect key="frame" x="175.5" y="47" width="167.5" height="17"/>
+                                                <rect key="frame" x="175.5" y="40.5" width="167.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="fvM-zl-olZ" firstAttribute="width" secondItem="FB3-Q1-3Vc" secondAttribute="width" id="lPL-sC-HKT"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="uUj-dx-2Ie">
-                                        <rect key="frame" x="0.0" y="451" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="419.5" width="343" height="58"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPb-eO-5Cf">
-                                                <rect key="frame" x="0.0" y="47" width="171.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="41" width="171.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOx-IF-qE4">
-                                                <rect key="frame" x="171.5" y="47" width="171.5" height="17"/>
+                                                <rect key="frame" x="171.5" y="41" width="171.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -195,19 +240,25 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LPi-lK-FBF">
-                                        <rect key="frame" x="0.0" y="523" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="485.5" width="343" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nU-eH-1rN">
                                                 <rect key="frame" x="0.0" y="0.0" width="171.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAy-zO-OHY">
                                                 <rect key="frame" x="171.5" y="0.0" width="171.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -237,19 +288,17 @@
                                     <constraint firstItem="uUj-dx-2Ie" firstAttribute="width" secondItem="YwO-Zm-93v" secondAttribute="width" id="tui-xy-DHy"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TcF-lm-CNb">
-                                <rect key="frame" x="169.5" y="303" width="37" height="37"/>
-                                <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TcF-lm-CNb" firstAttribute="centerY" secondItem="4cn-BS-HxS" secondAttribute="centerY" id="8fp-BI-WmZ"/>
+                            <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="cte-Qu-XJX" secondAttribute="bottom" id="0AE-H6-oQM"/>
                             <constraint firstItem="C10-E1-XNG" firstAttribute="top" secondItem="4cn-BS-HxS" secondAttribute="bottom" constant="8" id="Dt0-g7-kuz"/>
                             <constraint firstItem="4cn-BS-HxS" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leadingMargin" id="NpO-GF-r3x"/>
                             <constraint firstItem="4cn-BS-HxS" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" constant="8" id="O1N-gZ-0x9"/>
+                            <constraint firstAttribute="trailing" secondItem="cte-Qu-XJX" secondAttribute="trailing" id="cuk-JC-ea7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4cn-BS-HxS" secondAttribute="trailing" id="d7G-vX-S2G"/>
-                            <constraint firstItem="TcF-lm-CNb" firstAttribute="centerX" secondItem="4cn-BS-HxS" secondAttribute="centerX" id="kjg-PT-Yyo"/>
+                            <constraint firstItem="cte-Qu-XJX" firstAttribute="leading" secondItem="Zjl-qI-p7v" secondAttribute="leading" id="mM0-y0-UOM"/>
+                            <constraint firstItem="cte-Qu-XJX" firstAttribute="top" secondItem="iHX-wi-4D0" secondAttribute="bottom" id="rV1-xr-hDi"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
@@ -259,19 +308,18 @@
                     <navigationItem key="navigationItem" title="Current Weather" id="wra-jC-hLo">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="Pii-Xp-Swj">
                             <connections>
-                                <segue destination="uWV-wg-F6k" kind="show" id="OcO-qd-dpV"/>
+                                <action selector="searchButton:" destination="zD2-Jn-cCS" id="fSa-Di-ntC"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="set3" id="M2h-OA-35L">
                             <color key="tintColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="72N-PO-idH" kind="show" identifier="" id="3xb-eu-hhP"/>
+                                <action selector="settingsButton:" destination="zD2-Jn-cCS" id="bLv-LH-SAF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="TcF-lm-CNb" id="Tke-xU-Ogy"/>
                         <outlet property="barometer" destination="o3g-Af-Bvs" id="Qm2-Ak-ebR"/>
                         <outlet property="cityName" destination="OAB-6q-ShU" id="79K-VK-wDL"/>
                         <outlet property="cloudiness" destination="zYF-ab-JRB" id="ppK-qe-iOU"/>
@@ -287,43 +335,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6En-Qj-hhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="-300"/>
+            <point key="canvasLocation" x="1681" y="-300"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="ggd-ok-4wF">
             <objects>
-                <tableViewController id="72N-PO-idH" customClass="SettingsViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJ7-Rm-VYb">
+                <tableViewController storyboardIdentifier="settingsVC" id="72N-PO-idH" customClass="SettingsViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJ7-Rm-VYb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                        <color key="separatorColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="60" id="uOn-nR-Edz" customClass="SettingsTableViewCell" customModule="WeatherTestTask" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOn-nR-Edz" id="09s-F8-FtJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-4d-c6R">
-                                            <rect key="frame" x="8" y="8" width="359" height="43"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="44"/>
                                             <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                             <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="keT-Ck-7ou">
+                                            <rect key="frame" x="310" y="12" width="37" height="37"/>
+                                            <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="keT-Ck-7ou" secondAttribute="trailing" constant="20" id="3R0-gw-v78"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="xqz-4d-c6R" secondAttribute="trailing" id="H8c-Es-fsi"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="xqz-4d-c6R" secondAttribute="bottom" id="JVs-YI-ZCW"/>
                                         <constraint firstItem="xqz-4d-c6R" firstAttribute="leading" secondItem="09s-F8-FtJ" secondAttribute="leadingMargin" id="iqQ-Hx-ae4"/>
+                                        <constraint firstItem="keT-Ck-7ou" firstAttribute="centerY" secondItem="09s-F8-FtJ" secondAttribute="centerY" id="veY-c9-Cel"/>
                                         <constraint firstItem="xqz-4d-c6R" firstAttribute="top" secondItem="09s-F8-FtJ" secondAttribute="topMargin" id="yx5-T0-xoF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="keT-Ck-7ou" id="0iO-pW-AxW"/>
                                     <outlet property="cityNameOutlet" destination="xqz-4d-c6R" id="2yW-Kf-C7K"/>
                                 </connections>
                             </tableViewCell>
@@ -336,9 +391,6 @@
                             <outlet property="delegate" destination="72N-PO-idH" id="eJt-QH-2Og"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <segue destination="zD2-Jn-cCS" kind="show" identifier="SettingsToResult" id="Obw-67-g8w"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eF8-7E-ohe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,7 +400,7 @@
         <scene sceneID="jqP-fC-YXL">
             <objects>
                 <navigationController id="VnT-2d-dTE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HTN-86-X5p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HTN-86-X5p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.28780455510000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -372,7 +424,7 @@
         <!--Search-->
         <scene sceneID="e4Q-hf-ZO8">
             <objects>
-                <viewController id="uWV-wg-F6k" customClass="SearchViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchVC" id="uWV-wg-F6k" customClass="SearchViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4FY-am-wio"/>
                         <viewControllerLayoutGuide type="bottom" id="rVb-lC-jFU"/>
@@ -381,8 +433,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch1" translatesAutoresizingMaskIntoConstraints="NO" id="nDo-Pl-MxZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8I-WA-cHQ">
-                                <rect key="frame" x="48" y="398.5" width="279" height="30"/>
+                                <rect key="frame" x="48" y="399" width="279" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.22587835451977401" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zQi-HH-Z9c"/>
@@ -401,7 +456,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type your city or address" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="di1-Kx-Qo7">
-                                <rect key="frame" x="40" y="318.5" width="295" height="30"/>
+                                <rect key="frame" x="40" y="319" width="295" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -409,11 +464,21 @@
                                     <action selector="placeAction:" destination="uWV-wg-F6k" eventType="editingDidBegin" id="09j-0l-Bk2"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QWT-EH-jl2">
+                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
+                                <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="nDo-Pl-MxZ" firstAttribute="bottom" secondItem="rVb-lC-jFU" secondAttribute="top" id="7wn-ZU-EfE"/>
                             <constraint firstItem="B8I-WA-cHQ" firstAttribute="leading" secondItem="4Hb-Am-kWK" secondAttribute="leading" constant="48" id="PYU-ZJ-T3M"/>
+                            <constraint firstItem="QWT-EH-jl2" firstAttribute="centerX" secondItem="4Hb-Am-kWK" secondAttribute="centerX" id="Qvu-yB-ZJu"/>
                             <constraint firstItem="di1-Kx-Qo7" firstAttribute="leading" secondItem="4Hb-Am-kWK" secondAttribute="leadingMargin" constant="24" id="UhV-EY-aVQ"/>
+                            <constraint firstItem="nDo-Pl-MxZ" firstAttribute="leading" secondItem="4Hb-Am-kWK" secondAttribute="leading" id="c55-tE-IpA"/>
+                            <constraint firstItem="QWT-EH-jl2" firstAttribute="centerY" secondItem="4Hb-Am-kWK" secondAttribute="centerY" id="cCJ-J1-4pB"/>
+                            <constraint firstItem="nDo-Pl-MxZ" firstAttribute="centerX" secondItem="di1-Kx-Qo7" secondAttribute="centerX" id="geB-sO-bOw"/>
+                            <constraint firstItem="nDo-Pl-MxZ" firstAttribute="top" secondItem="4FY-am-wio" secondAttribute="bottom" id="hht-Ky-2w1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="di1-Kx-Qo7" secondAttribute="trailing" constant="24" id="kgf-Ue-WVP"/>
                             <constraint firstItem="B8I-WA-cHQ" firstAttribute="top" secondItem="di1-Kx-Qo7" secondAttribute="bottom" constant="50" id="kzj-FR-szZ"/>
                             <constraint firstAttribute="trailing" secondItem="B8I-WA-cHQ" secondAttribute="trailing" constant="48" id="tWd-8I-21A"/>
@@ -425,20 +490,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="jtc-ug-IjN"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="QWT-EH-jl2" id="Hre-ba-eSN"/>
                         <outlet property="placeOutlet" destination="di1-Kx-Qo7" id="9pw-oQ-7KB"/>
-                        <segue destination="zD2-Jn-cCS" kind="show" identifier="SearchToResult" id="HTs-Zh-3Fi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skI-0i-vxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2558" y="-750"/>
+            <point key="canvasLocation" x="2557.5999999999999" y="-750.67466266866575"/>
         </scene>
     </scenes>
     <resources>
         <image name="01-s" width="75" height="45"/>
+        <image name="launch1" width="640" height="1136"/>
         <image name="set3" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Obw-67-g8w"/>
-    </inferredMetricsTieBreakers>
 </document>

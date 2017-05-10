@@ -41,6 +41,8 @@ extension UIImageView {
             self.image = UIImage(named: "14-s.png")
         case "heavy rain":
             self.image = UIImage(named: "18-s.png")
+        case "haze":
+            self.image = UIImage(named: "05-s.png")
         default :
             self.image = UIImage(named: "01-s.png")
             break

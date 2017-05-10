@@ -9,23 +9,43 @@
 import UIKit
 import GooglePlaces
 
+protocol SearchViewControllerDelegate {
+    func doSomething(with weather: WeatherResponse)
+}
+
 class SearchViewController: UIViewController {
 
-    fileprivate var currentPlace : Place! {
-        didSet {
-            placeOutlet.text = currentPlace.address
-        }
+    var delegate: SearchViewControllerDelegate?
+    var weatherToGiveBack : WeatherResponse?
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        print("Init_SearchViewController")
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        print("Init_SearchViewController")
+    }
+ 
+    deinit {
+        print("deinit_SearchViewController")
+    }
+    
+    fileprivate var currentPlace = Place()
     
     @IBOutlet weak var placeOutlet: UITextField!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBAction func placeAction(_ sender: UITextField) {
         presentAutocompleteView()
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
         if placeOutlet.text != "" {
-            self.performSegue(withIdentifier: "SearchToResult", sender: currentPlace)
+            getWeather(in: currentPlace)
         } else {
             HelperInstance.shared.createAlert(title: "OoOops", message: "Looks like you have`t entered any city or address.. Please, do that!", currentView: self)
         }
@@ -36,11 +56,10 @@ class SearchViewController: UIViewController {
 
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SearchToResult" {
-            if let SearchResultVC = segue.destination as? ResultViewController {
-                SearchResultVC.placeForWeather = sender as! Place
-            }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if weatherToGiveBack != nil {
+            self.delegate?.doSomething(with: weatherToGiveBack!)
         }
     }
     
@@ -52,16 +71,34 @@ class SearchViewController: UIViewController {
 
 }
 
+extension SearchViewController {
+    
+    fileprivate func getWeather(in place: Place) {
+        
+        self.activityIndicator.startAnimating()
+        WeatherApi.shared.getWeatherData(latitude: place.latitude, longitude: place.longitude) { weatherResponse in
+            
+            self.activityIndicator.stopAnimating()
+            if weatherResponse != nil {
+                RealmCRUD.shared.write(somePlace: self.currentPlace)
+                self.weatherToGiveBack = weatherResponse
+                self.navigationController?.popViewController(animated: true)
+                
+            } else {
+                HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+            }
+        }
+    }
+}
+
 
 extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-//        print("Place name: \(place.name)")
-//        print("Place address: \(String(describing: place.formattedAddress))")
-//        print("Place coordinate: \(String(describing: place.coordinate))")
         
-        currentPlace = Place(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        currentPlace.setPlace(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        placeOutlet.text = currentPlace.address
         
         dismiss(animated: true, completion: nil)
     }
