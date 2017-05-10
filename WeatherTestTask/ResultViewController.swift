@@ -26,35 +26,38 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
-
+    
     fileprivate let defaultPlace = Place(name: "Dnipro", address: "Dnipro", latitude: 48.45, longitude: 34.983)
     
     var placeForWeather = Place(name: "", address: "", latitude: 0.0, longitude: 0.0) {
         
         didSet {
-            //activityIndicator?.startAnimating()
             
-            WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
-                if weatherResponse != nil {
-                    self.activityIndicator?.stopAnimating()
-                    
-                    self.cityName?.text = self.placeForWeather.address
-                    self.weatherIcon.setWithImageWithKey(key: (weatherResponse?.weatherDescription)!)
-                    self.temp?.text = weatherResponse?.temp!
-                    self.weatherDescription?.text = weatherResponse?.weatherDescription
-                    self.cloudiness?.text = weatherResponse?.cloudiness!
-                    self.wind?.text = weatherResponse?.windSpeed
-                    self.visibility?.text = weatherResponse?.visibility
-                    self.barometer?.text = weatherResponse?.pressure!
-                    self.humidity?.text = weatherResponse?.humidity!
-                    self.sunrise?.text = weatherResponse?.sunrise
-                    self.sunset?.text = weatherResponse?.sunset
-                    
-                    //add place to realm
-                    RealmCRUD.shared.write(somePlace: self.placeForWeather)
-                } else {
-                    HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+            if HelperInstance.shared.isInternetAvailable() {
+                WeatherApi.shared.getWeatherData(latitude: placeForWeather.latitude!, longitude: placeForWeather.longitude!) { weatherResponse in
+                    if weatherResponse != nil {
+                        self.activityIndicator?.stopAnimating()
+                        
+                        self.cityName?.text = self.placeForWeather.address
+                        self.weatherIcon.setWithImageWithKey(key: (weatherResponse?.weatherDescription)!)
+                        self.temp?.text = weatherResponse?.temp!
+                        self.weatherDescription?.text = weatherResponse?.weatherDescription
+                        self.cloudiness?.text = weatherResponse?.cloudiness!
+                        self.wind?.text = weatherResponse?.windSpeed
+                        self.visibility?.text = weatherResponse?.visibility
+                        self.barometer?.text = weatherResponse?.pressure!
+                        self.humidity?.text = weatherResponse?.humidity!
+                        self.sunrise?.text = weatherResponse?.sunrise
+                        self.sunset?.text = weatherResponse?.sunset
+                        
+                        //add place to realm
+                        RealmCRUD.shared.write(somePlace: self.placeForWeather)
+                    } else {
+                        HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
+                    }
                 }
+            } else {
+                HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like there is no internet connection. Please, try to establish an internet connection!", currentView: self)
             }
         }
     }
@@ -83,5 +86,5 @@ extension ResultViewController {
             
         }
     }
-
+    
 }
