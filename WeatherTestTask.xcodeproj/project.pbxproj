@@ -24,6 +24,7 @@
 		84906A061EBCC6E900AEA4A5 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84906A051EBCC6E900AEA4A5 /* WeatherAPI.swift */; };
 		84A596411EC45773008567C5 /* BingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A596401EC45773008567C5 /* BingApi.swift */; };
 		84A72B351EC1052500F2CEA9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A72B341EC1052400F2CEA9 /* Extensions.swift */; };
+		84C39B401EC4D9460083F384 /* MapPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C39B3F1EC4D9460083F384 /* MapPlace.swift */; };
 		84D2ED241EC1FEE2001DFA29 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D2ED231EC1FEE2001DFA29 /* SettingsTableViewCell.swift */; };
 		84D2ED261EC2094B001DFA29 /* RealmCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D2ED251EC2094B001DFA29 /* RealmCRUD.swift */; };
 		8F7CD5D2E7AED955343AEF07 /* Pods_WeatherTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9534285315C74ECF7F85ABCD /* Pods_WeatherTestTask.framework */; };
@@ -51,6 +52,7 @@
 		84906A051EBCC6E900AEA4A5 /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		84A596401EC45773008567C5 /* BingApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BingApi.swift; sourceTree = "<group>"; };
 		84A72B341EC1052400F2CEA9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		84C39B3F1EC4D9460083F384 /* MapPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPlace.swift; sourceTree = "<group>"; };
 		84D2ED231EC1FEE2001DFA29 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		84D2ED251EC2094B001DFA29 /* RealmCRUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmCRUD.swift; sourceTree = "<group>"; };
 		9534285315C74ECF7F85ABCD /* Pods_WeatherTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				848548A31EC09FBA00909BBA /* Place.swift */,
+				84C39B3F1EC4D9460083F384 /* MapPlace.swift */,
 				84D2ED251EC2094B001DFA29 /* RealmCRUD.swift */,
 				8464C2DA1EC0CFA9006173D7 /* WeatherResponse.swift */,
 				84D2ED231EC1FEE2001DFA29 /* SettingsTableViewCell.swift */,
@@ -271,7 +274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7D44FBC1C0C675ABBA60E0F6 /* [CP] Embed Pods Frameworks */ = {
@@ -310,6 +313,7 @@
 				8481452F1EC460E10026DE04 /* GoogleApi.swift in Sources */,
 				84D2ED241EC1FEE2001DFA29 /* SettingsTableViewCell.swift in Sources */,
 				849069FE1EBCC5F500AEA4A5 /* ResultViewController.swift in Sources */,
+				84C39B401EC4D9460083F384 /* MapPlace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

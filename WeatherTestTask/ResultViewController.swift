@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import RealmSwift
+import AlamofireImage
 
 fileprivate var isFirstCallAfterStart = true
 fileprivate var defaultPlace = Place()
@@ -17,6 +18,11 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     
     func doSomething(with weather: WeatherResponse) {
         fillViewWith(weather: weather)
+        PixabayApi.shared.getImageUrl(with: weather.cityName!) { url in
+            if url != nil {
+                self.backgroundImageView.af_setImage(withURL: URL(string: url!)! )
+            }
+        }
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -35,6 +41,7 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
         print("deinit_ResultViewController")
     }
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
@@ -63,10 +70,6 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        GooglePlaceApi.shared.getPlace(in: "48.461353", and: "35.049866") { (result) in
-            
-        }
         
         makeNavBarCool()
         
