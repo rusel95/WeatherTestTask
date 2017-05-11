@@ -284,41 +284,35 @@
         <scene sceneID="ggd-ok-4wF">
             <objects>
                 <tableViewController storyboardIdentifier="settingsVC" id="72N-PO-idH" customClass="SettingsViewController" customModule="WeatherTestTask" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJ7-Rm-VYb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJ7-Rm-VYb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <inset key="separatorInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                        <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="1" green="0.99215686270000003" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="60" id="uOn-nR-Edz" customClass="SettingsTableViewCell" customModule="WeatherTestTask" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOn-nR-Edz" id="09s-F8-FtJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-4d-c6R">
-                                            <rect key="frame" x="8" y="8" width="304" height="44"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-4d-c6R">
+                                            <rect key="frame" x="26" y="8" width="278" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                             <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="keT-Ck-7ou">
-                                            <rect key="frame" x="255" y="12" width="37" height="37"/>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="keT-Ck-7ou">
+                                            <rect key="frame" x="255" y="11" width="37" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="color" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="keT-Ck-7ou" secondAttribute="trailing" constant="20" id="3R0-gw-v78"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xqz-4d-c6R" secondAttribute="trailing" id="H8c-Es-fsi"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="xqz-4d-c6R" secondAttribute="bottom" id="JVs-YI-ZCW"/>
-                                        <constraint firstItem="xqz-4d-c6R" firstAttribute="leading" secondItem="09s-F8-FtJ" secondAttribute="leadingMargin" id="iqQ-Hx-ae4"/>
-                                        <constraint firstItem="keT-Ck-7ou" firstAttribute="centerY" secondItem="09s-F8-FtJ" secondAttribute="centerY" id="veY-c9-Cel"/>
-                                        <constraint firstItem="xqz-4d-c6R" firstAttribute="top" secondItem="09s-F8-FtJ" secondAttribute="topMargin" id="yx5-T0-xoF"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="activityIndicator" destination="keT-Ck-7ou" id="0iO-pW-AxW"/>
