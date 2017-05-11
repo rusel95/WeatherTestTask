@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="width" constant="100" id="Wc4-2e-C39"/>
                                     <constraint firstAttribute="height" constant="100" id="aLM-8N-gOg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="26"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.2666666667" green="0.84708245059999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,9 +48,9 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type your city or address" textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="oXl-9A-uPn">
-                                <rect key="frame" x="40" y="319" width="295" height="30"/>
+                                <rect key="frame" x="28" y="319" width="319" height="30"/>
                                 <color key="textColor" red="0.2666666667" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
@@ -74,10 +74,10 @@
                             <constraint firstItem="15M-nd-eVh" firstAttribute="bottom" secondItem="ETL-fI-rZw" secondAttribute="top" id="Iq4-Cb-V5x"/>
                             <constraint firstItem="15M-nd-eVh" firstAttribute="top" secondItem="tDG-ye-aVV" secondAttribute="bottom" id="ScV-Cd-XfL"/>
                             <constraint firstItem="oWK-Cl-Shb" firstAttribute="top" secondItem="oXl-9A-uPn" secondAttribute="bottom" constant="50" id="VLK-t5-8sg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oXl-9A-uPn" secondAttribute="trailing" constant="24" id="YoE-IX-8Qw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oXl-9A-uPn" secondAttribute="trailing" constant="12" id="YoE-IX-8Qw"/>
                             <constraint firstItem="oWK-Cl-Shb" firstAttribute="centerX" secondItem="Y2X-jZ-zUS" secondAttribute="centerX" id="aaM-rZ-s0I"/>
                             <constraint firstItem="15M-nd-eVh" firstAttribute="centerX" secondItem="oXl-9A-uPn" secondAttribute="centerX" id="cEs-VR-2uD"/>
-                            <constraint firstItem="oXl-9A-uPn" firstAttribute="leading" secondItem="Y2X-jZ-zUS" secondAttribute="leadingMargin" constant="24" id="etr-qS-e75"/>
+                            <constraint firstItem="oXl-9A-uPn" firstAttribute="leading" secondItem="Y2X-jZ-zUS" secondAttribute="leadingMargin" constant="12" id="etr-qS-e75"/>
                             <constraint firstItem="etb-f5-hO8" firstAttribute="centerY" secondItem="Y2X-jZ-zUS" secondAttribute="centerY" id="hN6-oN-490"/>
                             <constraint firstItem="etb-f5-hO8" firstAttribute="centerX" secondItem="Y2X-jZ-zUS" secondAttribute="centerX" id="ivq-Z9-xdv"/>
                         </constraints>

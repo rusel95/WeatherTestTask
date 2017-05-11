@@ -54,7 +54,7 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
         
-        cell.cityNameOutlet.text = objects[indexPath.row].address
+        cell.cityNameOutlet.text = "\(indexPath.row + 1)) " + objects[indexPath.row].address
         
         return cell
     }

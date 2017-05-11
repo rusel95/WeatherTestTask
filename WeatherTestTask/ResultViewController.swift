@@ -83,7 +83,7 @@ extension ResultViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = UIColor.clear
         
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Palatino", size: 20)!,
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Optima", size: 20)!,
                                                                          NSForegroundColorAttributeName: UIColor(red: 87, green: 143, blue: 220, alpha: 1) ]
     }
     
