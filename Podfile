@@ -11,4 +11,5 @@ target 'WeatherTestTask' do
 	pod 'AlamofireObjectMapper'
 	pod 'GoogleMaps’
   	pod 'GooglePlaces'
+	pod ‘SwiftyJSON’
 end
