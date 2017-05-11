@@ -39,32 +39,51 @@ class WeatherResponse: Mappable {
     func mapping(map: Map) {
         cityName    <- map["name"]
         
+        setWeather(with: map["weather"])
+        setMain(with: map["main"])
+        setWind(with: map["wind"])
+        setClouds(with: map["clouds"])
+        setVisibility(with: map["visibility"])
+        setSys(with: map["sys"])
+    }
+    
+    private func setWeather(with map: Map) {
         var weather = [Any]()
-        weather     <- map["weather"]
+        weather <- map
         self.weatherDescription = ( (weather[weather.startIndex] as! Dictionary<String, Any>)["description"] as! String )
-        
+    }
+    
+    private func setMain(with map: Map) {
         var main: [String : AnyObject] = [:]
-        main    <- map["main"]
+        main    <- map
         self.temp = String(describing: (main["temp"] as? Double)!) + " ℃"
         self.pressure = String(describing: (main["pressure"] as? Int)!) + " ㍱"
         self.humidity = String(describing: (main["humidity"] as? Int)!) + " %"
         self.tempMin = String(describing: main["temp_min"] as? Double) + " ℃"
         self.tempMax = String(describing: main["temp_max"] as? Double) + " ℃"
-        
+    }
+    
+    private func setWind(with map: Map) {
         var wind: [String : AnyObject] = [:]
-        wind    <- map["wind"]
+        wind    <- map
         self.windSpeed = String(describing: ( (wind["speed"])! as? Double)! ) + " m/s"
-        
+    }
+    
+    private func setClouds(with map: Map) {
         var clouds: [String : AnyObject] = [:]
-        clouds  <- map["clouds"]
+        clouds  <- map
         self.cloudiness = String( describing: (clouds["all"] as? Int)! ) + " %"
-        
+    }
+    
+    private func setVisibility(with map: Map) {
         var visibilityResponse = Int()
-        visibilityResponse      <- map["visibility"]
+        visibilityResponse  <- map
         self.visibility = String(describing: visibilityResponse) + " m"
-        
+    }
+    
+    private func setSys(with map: Map) {
         var sys: [String : AnyObject] = [:]
-        sys     <- map["sys"]
+        sys     <- map
         self.sunrise = String( describing: Date().unixtoString(secondsSince1970: (sys["sunrise"] as? Int)! ) )
         self.sunset = String( describing: Date().unixtoString(secondsSince1970: (sys["sunset"] as? Int)! ) )
     }
