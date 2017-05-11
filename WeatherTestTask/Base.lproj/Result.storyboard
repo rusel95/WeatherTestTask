@@ -61,7 +61,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="GaD-VM-VsJ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
                                                 <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -89,7 +89,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="SFu-Bb-9Kv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                         <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -106,7 +106,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="6c6-gQ-LKL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                         <color key="textColor" red="0.34299924969673157" green="0.56005954742431641" blue="0.86357694864273071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -123,7 +123,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="yfn-sG-z7v"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                         <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -140,7 +140,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="nyA-lZ-WYi"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                         <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -157,7 +157,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="aCX-Cv-A8B"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                         <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -177,7 +177,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="u1c-WV-xWg"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                                 <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -194,7 +194,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="d50-qi-nmj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                                 <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -215,7 +215,6 @@
                                 <constraints>
                                     <constraint firstItem="FB3-Q1-3Vc" firstAttribute="height" secondItem="zYF-ab-JRB" secondAttribute="height" id="Bwn-S8-KMr"/>
                                     <constraint firstItem="o3g-Af-Bvs" firstAttribute="height" secondItem="zYF-ab-JRB" secondAttribute="height" id="C93-1T-eo5"/>
-                                    <constraint firstItem="zYF-ab-JRB" firstAttribute="top" secondItem="7yO-2X-vRm" secondAttribute="bottom" constant="28" id="QPr-Ui-bMr"/>
                                     <constraint firstItem="zYF-ab-JRB" firstAttribute="height" secondItem="4cn-BS-HxS" secondAttribute="height" multiplier="0.06" id="QpC-qK-Oda"/>
                                     <constraint firstItem="rFF-Mx-ye2" firstAttribute="height" secondItem="zYF-ab-JRB" secondAttribute="height" id="hol-pd-LyV"/>
                                     <constraint firstItem="JLV-Gn-g0a" firstAttribute="height" secondItem="zYF-ab-JRB" secondAttribute="height" id="vTF-1V-0rQ"/>
