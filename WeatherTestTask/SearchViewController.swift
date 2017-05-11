@@ -98,6 +98,7 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
         currentPlace.setPlace(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        print(place.placeID)
         placeOutlet.text = currentPlace.address
         
         dismiss(animated: true, completion: nil)

@@ -64,15 +64,15 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GooglePlaceApi.shared.getPlace(in: "48.461353", and: "35.049866") { (result) in
+            
+        }
+        
         makeNavBarCool()
         
         downloadDefaultOrLastCity()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-
-    }
-    
+        
 }
 
 extension ResultViewController {
