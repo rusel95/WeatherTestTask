@@ -5,7 +5,9 @@
 //  Created by Admin on 05.05.17.
 //  Copyright © 2017 rusel95. All rights reserved.
 
-//OpenWeathermap.com/api
+
+
+//MARK: OpenWeathermap.com/api
 
 import Foundation
 import Alamofire
@@ -27,10 +29,6 @@ class WeatherApi {
         
         let locationUrl = "?lat=" + String(latitude) + "&lon=" + String(longitude)
         let urlForRequest = apiSkeletonUrl + locationUrl + apiAccuracyUrl + apiMetricUrl + apiKeyUrl
-        
-//        Alamofire.request(urlForRequest).responseJSON { (response) in
-//           print(response.result.value)
-//        }
         
         Alamofire.request(urlForRequest).responseObject { (response: DataResponse<WeatherResponse>) in
             
