@@ -77,9 +77,23 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            RealmCRUD.shared.deleteRealmPlaces(placeToDelete: objects[indexPath.row])
-            objects.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            let neededKey = Array(dict.keys)[indexPath.section]
+            let neededPlace = dict[neededKey]?[indexPath.row]
+            
+            if Array(dict.keys).count == 1 {
+                dict.removeValue(forKey: neededKey)
+                let set : IndexSet = [indexPath.section]
+                tableView.deleteSections(set, with: .automatic)
+            } else if Array(dict.keys).count > 1 {
+                dict[neededKey]?.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+            }
+
+            RealmCRUD.shared.deleteRealmPlaces(placeToDelete: neededPlace!)
+            //objects.remove(at: indexPath.row)
+            
+
         }
     }
     
