@@ -12,6 +12,11 @@ protocol SettingsViewControllerDelegate {
     func doSomething(with weather: WeatherResponse)
 }
 
+//struct tableData {
+//    var sections = [Character]()
+////    var itemsInsSections =
+//}
+
 class SettingsViewController: UITableViewController {
     
     var delegate: SettingsViewControllerDelegate?
@@ -19,10 +24,8 @@ class SettingsViewController: UITableViewController {
     fileprivate var weatherToGiveBack : WeatherResponse?
     fileprivate var objects = [Place]()
     fileprivate let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    fileprivate var sectionsArray = [Character]()
-    fileprivate var itemsInSections = [[String]]()
     
-    var dict : [ Character : [String] ] = [:]
+    var dict = [ "" : [String]() ]
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -45,30 +48,29 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Settings"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         objects = RealmCRUD.shared.queryRealmPlacesToArray()
-        sectionsArray = getHeaders(at: objects)
-        itemsInSections = getItemInSections(sectionsArray, with: objects)
+        dict = getSectionsAndRows(at: objects)
     }
-    
+       
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if weatherToGiveBack != nil {
-            //weatherToGiveBack?.search = self.search
             self.delegate?.doSomething(with: weatherToGiveBack!)
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsInSections[section].count
+        let neededKey = Array(dict.keys)[section]
+        return (dict[neededKey]?.count)!
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
         
-        cell.cityNameOutlet.text = itemsInSections[indexPath.section][indexPath.row]
+        let neededKey = Array(dict.keys)[indexPath.section]
+        
+        cell.cityNameOutlet.text = dict[neededKey]?[indexPath.row]
         
         return cell
     }
@@ -85,27 +87,28 @@ class SettingsViewController: UITableViewController {
         getWeather(in: objects[indexPath.row], from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return dict.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Array(dict.keys)[section]
+    }
+    
 }
 
 
 //MARK: For sections
 extension SettingsViewController {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionsArray.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(sectionsArray[section])
-    }
-    
-    fileprivate func getHeaders(at allPlaces: [Place]) -> [Character] {
+    fileprivate func getSectionsAndRows(at allPlaces: [Place]) -> [ String : [String] ] {
         
-        var currentSections = [Character]()
+        var tempDict = [ String : [String] ]()
         
         //every letter path through
         for letter in lettersArray {
             
+            var tempItemsInSection = [String]()
             //every place path through
             for place in allPlaces {
                 
@@ -113,42 +116,22 @@ extension SettingsViewController {
                 let placeNameFirstCharacter = place.name.characters[place.name.startIndex]
                 if placeNameFirstCharacter == Character(letter) {
                     
-                    //add letter if it does not exist already in curerntheaders
-                    if !currentSections.contains( Character(letter) ) {
-                        currentSections.append( Character(letter) )
-                    }
+                    tempItemsInSection.append(place.name)
                 }
             }
-        }
-        return currentSections
-    }
-    
-    fileprivate func getItemInSections(_ sections: [Character], with places: [Place]) -> [ [String] ] {
-        
-        var tempItemsInSections = [ [String] ]()
-        
-        //every letter in section path through
-        for letter in sections {
             
-            
-            //every place path through
-            for place in places {
-                
-                let placeNameFirstCharacter = place.name.characters[place.name.startIndex]
-                if placeNameFirstCharacter == letter {
-
-                    tempItemsInSections.append([place.name])
-                }
+            if tempItemsInSection.count != 0 {
+                tempDict[letter] = tempItemsInSection
             }
         }
         
-        return tempItemsInSections
+        return tempDict
     }
     
 }
 
 
-
+//MARK: getting of weather
 extension SettingsViewController {
     
     fileprivate func getWeather(in place: Place, from cell: SettingsTableViewCell) {
