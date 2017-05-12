@@ -6,6 +6,10 @@
 //  Copyright © 2017 rusel95. All rights reserved.
 //
 
+
+//MARK: Do not working properly yet because of status code 302 in get image url
+
+
 import Foundation
 import Alamofire
 import SwiftyJSON
