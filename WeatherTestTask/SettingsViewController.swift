@@ -49,7 +49,7 @@ class SettingsViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if weatherToGiveBack != nil {
-            weatherToGiveBack?.search = self.search
+            //weatherToGiveBack?.search = self.search
             self.delegate?.doSomething(with: weatherToGiveBack!)
         }
     }
@@ -91,6 +91,7 @@ extension SettingsViewController {
             
             cell.activityIndicator.stopAnimating()
             if weatherResponse != nil {
+                weatherResponse?.cityName = place.name
                 self.weatherToGiveBack = weatherResponse
                 self.navigationController?.popViewController(animated: true)
             } else {

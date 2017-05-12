@@ -17,37 +17,20 @@ class PixabayApi {
     
     private let apiSkeletonUrl = "https://pixabay.com/api/"
     private let apiKeyUrl = "?key=5338293-61c484c98ff85459e5f832d8c"
-    
-//    func getImage(with name: String, giveData: @escaping (WeatherResponse?) -> Void) -> Void {
-//
-//        let urlForRequest = apiSkeletonUrl + apiKeyUrl + "&q=" + name
-//        
-//        Alamofire.request(urlForRequest).responseJSON { (response) in
-//            switch response.result {
-//                
-//            case .success:
-//                let weatherResponse = response.result.value!
-//                print(weatherResponse)
-//                
-//            case .failure(let error):
-//                print(error.localizedDescription, urlForRequest)
-//                giveData(nil)
-//            }
-//        }
-//    }
-    
+       
     func getImageUrl(with name: String, giveURL: @escaping (String?) -> Void) -> Void {
         
-        let parts = [name.components(separatedBy: " ")]
+        let parts = name.components(separatedBy: " ")
+        
         var qUrl = "&q="
         for part in parts {
-            qUrl += part[0]
-            if part != parts.last! {
+            qUrl += part
+            if part != parts.last {
                 qUrl += "+"
             }
         }
-        print(qUrl)
-        let urlForRequest = apiSkeletonUrl + apiKeyUrl + "&q=" + name
+        
+        let urlForRequest = apiSkeletonUrl + apiKeyUrl + qUrl
         
         Alamofire.request(urlForRequest).responseJSON { (response) in
             switch response.result {

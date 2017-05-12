@@ -19,7 +19,7 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
     func doSomething(with weather: WeatherResponse) {
 
         fillViewWith(weather: weather)
-        PixabayApi.shared.getImageUrl(with: weather.search!) { url in
+        PixabayApi.shared.getImageUrl(with: weather.cityName!) { url in
             if url != nil {
                 self.backgroundImageView.af_setImage(withURL: URL(string: url!)! )
             }
@@ -131,9 +131,7 @@ extension ResultViewController {
             
             self.activityIndicator.stopAnimating()
             if weatherResponse != nil {
-                print(place)
                 RealmCRUD.shared.write(somePlace: place)
-                weatherResponse?.cityName = place.name
                 self.fillViewWith(weather: weatherResponse!)
             } else {
                 HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
