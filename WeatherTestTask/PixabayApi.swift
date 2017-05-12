@@ -38,6 +38,15 @@ class PixabayApi {
     
     func getImageUrl(with name: String, giveURL: @escaping (String?) -> Void) -> Void {
         
+        let parts = [name.components(separatedBy: " ")]
+        var qUrl = "&q="
+        for part in parts {
+            qUrl += part[0]
+            if part != parts.last! {
+                qUrl += "+"
+            }
+        }
+        print(qUrl)
         let urlForRequest = apiSkeletonUrl + apiKeyUrl + "&q=" + name
         
         Alamofire.request(urlForRequest).responseJSON { (response) in
