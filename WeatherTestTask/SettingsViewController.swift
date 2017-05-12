@@ -15,7 +15,10 @@ protocol SettingsViewControllerDelegate {
 class SettingsViewController: UITableViewController {
     
     var delegate: SettingsViewControllerDelegate?
-    var weatherToGiveBack : WeatherResponse?
+    
+    fileprivate var weatherToGiveBack : WeatherResponse?
+    fileprivate var objects = [Place]()
+    fileprivate var search = String()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -29,7 +32,6 @@ class SettingsViewController: UITableViewController {
         print("Init_SettingsViewController")
     }
     
-    
     deinit {
         print("deinit_SettingsViewController")
     }
@@ -38,15 +40,20 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Settings"
-        
     }
-    
-    fileprivate var objects = [Place]()
     
     override func viewWillAppear(_ animated: Bool) {
         objects = RealmCRUD.shared.queryRealmPlacesToArray()
     }
-        
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if weatherToGiveBack != nil {
+            weatherToGiveBack?.search = self.search
+            self.delegate?.doSomething(with: weatherToGiveBack!)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
@@ -58,7 +65,7 @@ class SettingsViewController: UITableViewController {
         
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             RealmCRUD.shared.deleteRealmPlaces(placeToDelete: objects[indexPath.row])
@@ -68,28 +75,17 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let tempPlace = Place()
-        tempPlace.setPlace(name: objects[indexPath.row].name, address: objects[indexPath.row].address, latitude: objects[indexPath.row].latitude, longitude: objects[indexPath.row].longitude)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
-        
-        getWeather(in: tempPlace, from: cell)
+        self.search = objects[indexPath.row].name
+        getWeather(in: objects[indexPath.row], from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if weatherToGiveBack != nil {
-            self.delegate?.doSomething(with: weatherToGiveBack!)
-        }
-    }
 }
+
 
 extension SettingsViewController {
     
     fileprivate func getWeather(in place: Place, from cell: SettingsTableViewCell) {
-        
-        cell.cityNameOutlet.text = place.address
+    
         cell.activityIndicator.startAnimating()
         WeatherApi.shared.getWeatherData(latitude: place.latitude, longitude: place.longitude) { weatherResponse in
             

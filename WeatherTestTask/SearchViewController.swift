@@ -80,8 +80,11 @@ extension SearchViewController {
             
             self.activityIndicator.stopAnimating()
             if weatherResponse != nil {
+                //self.currentPlace.
                 RealmCRUD.shared.write(somePlace: self.currentPlace)
+                weatherResponse?.search = self.currentPlace.name
                 self.weatherToGiveBack = weatherResponse
+                self.weatherToGiveBack?.cityName = self.currentPlace.name
                 self.navigationController?.popViewController(animated: true)
                 
             } else {
@@ -98,7 +101,6 @@ extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
         currentPlace.setPlace(name: place.name, address: place.formattedAddress!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-        print(place.placeID)
         placeOutlet.text = currentPlace.address
         
         dismiss(animated: true, completion: nil)
