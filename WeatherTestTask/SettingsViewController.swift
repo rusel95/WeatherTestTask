@@ -25,7 +25,7 @@ class SettingsViewController: UITableViewController {
     fileprivate var objects = [Place]()
     fileprivate let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
-    var dict = [ "" : [String]() ]
+    var dict = [ "" : [Place]() ]
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -70,7 +70,7 @@ class SettingsViewController: UITableViewController {
         
         let neededKey = Array(dict.keys)[indexPath.section]
         
-        cell.cityNameOutlet.text = dict[neededKey]?[indexPath.row]
+        cell.cityNameOutlet.text = dict[neededKey]?[indexPath.row].address
         
         return cell
     }
@@ -84,7 +84,11 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        getWeather(in: objects[indexPath.row], from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
+        
+        let neededKey = Array(dict.keys)[indexPath.section]
+        let neededPlace = dict[neededKey]?[indexPath.row]
+        
+        getWeather(in: neededPlace!, from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,14 +105,14 @@ class SettingsViewController: UITableViewController {
 //MARK: For sections
 extension SettingsViewController {
     
-    fileprivate func getSectionsAndRows(at allPlaces: [Place]) -> [ String : [String] ] {
+    fileprivate func getSectionsAndRows(at allPlaces: [Place]) -> [ String : [Place] ] {
         
-        var tempDict = [ String : [String] ]()
+        var tempDict = [ String : [Place] ]()
         
         //every letter path through
         for letter in lettersArray {
             
-            var tempItemsInSection = [String]()
+            var tempItemsInSection = [Place]()
             //every place path through
             for place in allPlaces {
                 
@@ -116,7 +120,7 @@ extension SettingsViewController {
                 let placeNameFirstCharacter = place.name.characters[place.name.startIndex]
                 if placeNameFirstCharacter == Character(letter) {
                     
-                    tempItemsInSection.append(place.name)
+                    tempItemsInSection.append(place)
                 }
             }
             

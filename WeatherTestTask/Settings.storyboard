@@ -28,7 +28,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2r-Yn-M9Q">
-                                            <rect key="frame" x="24" y="8" width="343" height="44"/>
+                                            <rect key="frame" x="32" y="8" width="335" height="44"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                             <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="a2r-Yn-M9Q" firstAttribute="leading" secondItem="YHK-6U-99F" secondAttribute="leadingMargin" constant="16" id="9M8-lU-0cs"/>
+                                        <constraint firstItem="a2r-Yn-M9Q" firstAttribute="leading" secondItem="YHK-6U-99F" secondAttribute="leadingMargin" constant="24" id="9M8-lU-0cs"/>
                                         <constraint firstItem="JW5-rz-x1K" firstAttribute="trailing" secondItem="YHK-6U-99F" secondAttribute="trailingMargin" id="G6y-Ka-3ZE"/>
                                         <constraint firstItem="a2r-Yn-M9Q" firstAttribute="top" secondItem="YHK-6U-99F" secondAttribute="topMargin" id="M8j-gR-pMb"/>
                                         <constraint firstItem="a2r-Yn-M9Q" firstAttribute="bottom" secondItem="YHK-6U-99F" secondAttribute="bottomMargin" id="scH-UH-7SN"/>
