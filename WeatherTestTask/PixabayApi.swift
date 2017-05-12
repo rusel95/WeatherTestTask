@@ -45,7 +45,6 @@ class PixabayApi {
                 
             case .success:
                 let json = JSON(response.result.value!)
-                print(name, json)
                 let url = json["hits"][0]["webformatURL"].string
                 giveURL(url)
                 

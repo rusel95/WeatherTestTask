@@ -131,8 +131,9 @@ extension ResultViewController {
             
             self.activityIndicator.stopAnimating()
             if weatherResponse != nil {
-                place.name = defaultPlace.name
+                print(place)
                 RealmCRUD.shared.write(somePlace: place)
+                weatherResponse?.cityName = place.name
                 self.fillViewWith(weather: weatherResponse!)
             } else {
                 HelperInstance.shared.createAlert(title: "OoOops..", message: "Looks like mistake while weather request", currentView: self)
@@ -142,7 +143,7 @@ extension ResultViewController {
     
     fileprivate func fillViewWith(weather: WeatherResponse) {
         
-        self.cityName?.text = weather.search
+        self.cityName?.text = weather.cityName
         self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
         self.temp?.text = weather.temp! + "\n" + weather.weatherDescription!
         self.cloudiness?.text = "Cloudiness: " + weather.cloudiness!
