@@ -17,8 +17,9 @@ fileprivate var defaultPlace = Place()
 class ResultViewController: UIViewController, SettingsViewControllerDelegate, SearchViewControllerDelegate {
     
     func doSomething(with weather: WeatherResponse) {
+
         fillViewWith(weather: weather)
-        PixabayApi.shared.getImageUrl(with: weather.cityName!) { url in
+        PixabayApi.shared.getImageUrl(with: weather.search!) { url in
             if url != nil {
                 self.backgroundImageView.af_setImage(withURL: URL(string: url!)! )
             }
@@ -74,6 +75,7 @@ class ResultViewController: UIViewController, SettingsViewControllerDelegate, Se
         makeNavBarCool()
         
         downloadDefaultOrLastCity()
+        
     }
         
 }
@@ -94,15 +96,29 @@ extension ResultViewController {
         
         defaultPlace.setPlace(name: "Dnipro", address: "Dnipropetrovska oblast", latitude: 48.4686, longitude: 35.0357)
         
+        ////////////////////////
         if isFirstCallAfterStart == true {
             if RealmCRUD.shared.queryRealmPlacesToArray().count == 0 {
                 getWeather(in: defaultPlace)
+                //////////////////////////////
+                PixabayApi.shared.getImageUrl(with: defaultPlace.name) { url in
+                    if url != nil {
+                        self.backgroundImageView.af_setImage(withURL: URL(string: url!)! )
+                    }
+                }
+                /////////////////////////////
                 isFirstCallAfterStart = false
             } else {
                 let lastRealmPlace = RealmCRUD.shared.queryRealmPlacesToArray().last
                 let lastSearchedPlace = Place()
                     lastSearchedPlace.setPlace(name: (lastRealmPlace?.name)!, address: (lastRealmPlace?.address)!, latitude: (lastRealmPlace?.latitude)!, longitude: (lastRealmPlace?.longitude)!)
                 getWeather(in: lastSearchedPlace)
+                
+                PixabayApi.shared.getImageUrl(with: (lastRealmPlace?.name)!) { url in
+                    if url != nil {
+                        self.backgroundImageView.af_setImage(withURL: URL(string: url!)! )
+                    }
+                }
                 isFirstCallAfterStart = false
             }
         }
@@ -115,6 +131,7 @@ extension ResultViewController {
             
             self.activityIndicator.stopAnimating()
             if weatherResponse != nil {
+                place.name = defaultPlace.name
                 RealmCRUD.shared.write(somePlace: place)
                 self.fillViewWith(weather: weatherResponse!)
             } else {
@@ -125,7 +142,7 @@ extension ResultViewController {
     
     fileprivate func fillViewWith(weather: WeatherResponse) {
         
-        self.cityName?.text = weather.cityName
+        self.cityName?.text = weather.search
         self.weatherIcon.setWithImageWithKey(key: (weather.weatherDescription)!)
         self.temp?.text = weather.temp! + "\n" + weather.weatherDescription!
         self.cloudiness?.text = "Cloudiness: " + weather.cloudiness!

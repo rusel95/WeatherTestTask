@@ -80,8 +80,11 @@ extension SearchViewController {
             
             self.activityIndicator.stopAnimating()
             if weatherResponse != nil {
+                //self.currentPlace.
                 RealmCRUD.shared.write(somePlace: self.currentPlace)
+                weatherResponse?.search = self.currentPlace.name
                 self.weatherToGiveBack = weatherResponse
+                self.weatherToGiveBack?.cityName = self.currentPlace.name
                 self.navigationController?.popViewController(animated: true)
                 
             } else {

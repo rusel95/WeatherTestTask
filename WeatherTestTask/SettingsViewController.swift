@@ -18,6 +18,7 @@ class SettingsViewController: UITableViewController {
     
     fileprivate var weatherToGiveBack : WeatherResponse?
     fileprivate var objects = [Place]()
+    fileprivate var search = String()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -48,6 +49,7 @@ class SettingsViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if weatherToGiveBack != nil {
+            weatherToGiveBack?.search = self.search
             self.delegate?.doSomething(with: weatherToGiveBack!)
         }
     }
@@ -63,7 +65,7 @@ class SettingsViewController: UITableViewController {
         
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             RealmCRUD.shared.deleteRealmPlaces(placeToDelete: objects[indexPath.row])
@@ -73,6 +75,7 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.search = objects[indexPath.row].name
         getWeather(in: objects[indexPath.row], from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
     }
     

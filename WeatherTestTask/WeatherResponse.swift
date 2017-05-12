@@ -13,6 +13,8 @@ class WeatherResponse: Mappable {
     
     var cityName: String?
     
+    var search: String?
+    
     var weatherMain: String?
     var weatherDescription: String?
     
