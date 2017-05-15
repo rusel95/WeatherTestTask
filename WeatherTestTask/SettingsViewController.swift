@@ -220,14 +220,11 @@ extension SettingsViewController {
                 let placeNameFirstCharacter = String( describing: place.name.characters.first! )
                 if placeNameFirstCharacter == letter {
                     tempItemsInSection.append(place)
-                    print(place)
                 }
             }
             if tempItemsInSection.count != 0 {
                 tempDict[letter] = tempItemsInSection
             }
-            
-            print(tempDict)
         }
         return tempDict
     }
