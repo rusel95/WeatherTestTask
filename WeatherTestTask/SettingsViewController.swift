@@ -123,10 +123,15 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         
-        var lettersArray = [String]()
-        for key in filteredDict.keys {
-            lettersArray.append(key)
+        var lettersArray : [String]?
+        if filteredDict["results: "] == nil {
+            var array = [String]()
+            for key in filteredDict.keys {
+                array.append(key)
+            }
+            lettersArray = array
         }
+        
         return lettersArray
     }
     
@@ -148,22 +153,25 @@ extension SettingsViewController {
     private func filterDictWith(text: String) -> [ String : [Place] ] {
         
         var tempDict = [ String : [Place] ]()
-       
+        var searchResults = [Place]()
+        
         //if text in search bar exist
         if text != "" {
             
             //path through all dict keys to fill tempDict
             for key in dict.keys {
                 
-                //if letter of searched text is the same as key of dict
-                if key == String(describing: text.characters.first!) || key.uppercased() == String( describing: text.characters.first!) {
+                //path through all places in section
+                let sectionPlaces = dict[key]
+                for place in sectionPlaces! {
                     
-                    //fill tempDict with values of dict with key
-                    tempDict[key] = dict[key]
+                    if place.name.contains(text) {
+                        searchResults.append(place)
+                    }
                 }
             }
-            
-            if tempDict.keys.count == 0 {
+            tempDict["results: "] = searchResults
+            if tempDict["results: "]?.count == 0 {
                 
                 let tempPlace = Place()
                 tempPlace.setPlace(name: "no results... please, try again", address: "", latitude: 0, longitude: 0)
@@ -178,26 +186,7 @@ extension SettingsViewController {
         
         return tempDict
     }
-    
-    private func fellKeysWith() {
-    //path through all place in section
-    //                    let placesInSection = dict[key]!
-    //                    for i in 0..<placesInSection.count {
-    //
-    //                        var temp = true
-    //                        for j in 0..<text.characters.count {
-    //
-    //                            let placeNameCharacter = placesInSection[i].name.characters[j]
-    //                            if placeNameCharacter == text.characters[text.index(0, offsetBy: Int(i))] {
-    //                                temp = false
-    //                            }
-    //                            if temp == true {
-    //                                print(placesInSection[i])
-    //                                tempDict[key]?.append(placesInSection[i])
-    //                            }
-    //                        }
-    //                    }
-    }
+
 }
 
 
@@ -229,6 +218,8 @@ extension SettingsViewController {
                 tempDict[letter] = tempItemsInSection
             }
         }
+        
+        print(tempDict)
         
         return tempDict
     }
