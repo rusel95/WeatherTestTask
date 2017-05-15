@@ -132,7 +132,7 @@ extension SettingsViewController {
     private func filterDictWith(text: String) -> [ String : [Place] ] {
         
         var tempDict = [ "" : [Place]() ]
-        
+       
         //if text in search bar exist
         if text != "" {
             
@@ -141,6 +141,24 @@ extension SettingsViewController {
                 
                 //if letter of searched text is the same as key of dict
                 if key == String(describing: text.characters.first!) || key.uppercased() == String( describing: text.characters.first!) {
+                    
+                    //path through all place in section
+//                    let placesInSection = dict[key]!
+//                    for i in 0..<placesInSection.count {
+//                        
+//                        var temp = true
+//                        for j in 0..<text.characters.count {
+//                            
+//                            let placeNameCharacter = placesInSection[i].name.characters[j]
+//                            if placeNameCharacter == text.characters[text.index(0, offsetBy: Int(i))] {
+//                                temp = false
+//                            }
+//                            if temp == true {
+//                                print(placesInSection[i])
+//                                tempDict[key]?.append(placesInSection[i])
+//                            }
+//                        }
+//                    }
                     
                     //fill tempDict with values of dict with key
                     tempDict[key] = dict[key]
@@ -151,10 +169,9 @@ extension SettingsViewController {
             tempDict = dict
         }
         
-        print(tempDict)
-        
         return tempDict
     }
+    
 }
 
 
