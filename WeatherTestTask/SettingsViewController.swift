@@ -117,6 +117,19 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
         return Array(filteredDict.keys)[section]
     }
     
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        
+        var lettersArray = [String]()
+        for key in filteredDict.keys {
+            lettersArray.append(key)
+        }
+        return lettersArray
+    }
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
+    }
+    
 }
 
 //MARK: Search Bar delegetion
