@@ -21,11 +21,12 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     
     
     //MARK: stored properties
-    var objects = [Place]()
-    //    var dict = [ "" : [Place]() ]
+    var allPlaces = [Place]()
     
     var sectionsNames = [String]()
     var placesInSections = [[Place]]()
+    
+    var searchedSectionsNames = [String]()
     var searchedPlacesInSections = [[Place]]()
     
     //MARK: outlets/actions
@@ -56,9 +57,8 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
         
         setNavBar()
         
-        objects = RealmCRUD.shared.queryPlacesToArray()
-        getSectionsAndPlaces(from: objects)
-        searchedPlacesInSections = placesInSections
+        allPlaces = RealmCRUD.shared.queryPlacesToArray()
+        getSectionsAndPlaces()
     }
     
     func setNavBar() {
@@ -74,17 +74,12 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionsNames.count
+        return searchedSectionsNames.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        
-        
-        return sectionsNames[section]
+        return searchedSectionsNames[section]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,30 +99,20 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
             
             let neededPlace = searchedPlacesInSections[indexPath.section][indexPath.row]
             
-            //            if Array(filteredDict.keys).count == 1 {
-            //                filteredDict.removeValue(forKey: neededKey)
-            //                let set : IndexSet = [indexPath.section]
-            //                tableView.deleteSections(set, with: .automatic)
-            //            } else if Array(filteredDict.keys).count > 1 {
-            //                filteredDict[neededKey]?.remove(at: indexPath.row)
-            //                tableView.deleteRows(at: [indexPath], with: .left)
-            //                /////////////////////////////////////////
-            ////                let set : IndexSet = [indexPath.section]
-            ////                tableView.deleteSections(set, with: .right)
-            //            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            searchedPlacesInSections[indexPath.section].remove(at: indexPath.row)
             
             RealmCRUD.shared.deletePlace(placeToDelete: neededPlace)
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let neededPlace = placesInSections[indexPath.section][indexPath.row]
-        
+        let neededPlace = searchedPlacesInSections[indexPath.section][indexPath.row]
         getWeather(in: neededPlace, from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
     }
+    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionsNames
+        return searchedSectionsNames.count > 1 ? searchedSectionsNames : nil
     }
     
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -145,39 +130,41 @@ extension SettingsViewController {
     }
     
     private func searchFilter(text: String) {
+        
         var searchResults = [Place]()
+        
+        searchedPlacesInSections.removeAll()
+        searchedSectionsNames.removeAll()
         
         if text != "" {
             
-            searchedPlacesInSections.removeAll()
             //path through all sections
             for i in 0..<sectionsNames.count {
                 
                 //path through all places in section
                 for place in placesInSections[i] {
-                    if place.name.contains(text.lowercased()) {
+                    if place.name.lowercased().contains(text.lowercased()) {
                         searchResults.append(place)
                     }
                 }
             }
             
-            sectionsNames.removeAll()
             if searchResults.count != 0 {
                 searchedPlacesInSections.append(searchResults)
-                sectionsNames = ["results: "]
+                searchedSectionsNames = ["results: "]
             } else {
-                if placesInSections.count == 0 {
+                //if placesInSections.count == 0 {
                     let tempPlace = Place()
                     tempPlace.setPlace(name: "no results... please, try again", address: "", latitude: 0, longitude: 0)
                     var tempPlaceArray = [Place]()
                     tempPlaceArray.append(tempPlace)
-                    placesInSections.append(tempPlaceArray)
-                    sectionsNames = ["OoOops..."]
-                }
+                    searchedPlacesInSections.append(tempPlaceArray)
+                    searchedSectionsNames = ["OoOops..."]
+                //}
             }
             
         } else {
-            getSectionsAndPlaces(from: objects)
+            getSectionsAndPlaces()
         }
         
     }
@@ -188,7 +175,9 @@ extension SettingsViewController {
 //MARK: For sections
 extension SettingsViewController {
     
-    fileprivate func getSectionsAndPlaces(from allPlaces: [Place]) {
+    fileprivate func getSectionsAndPlaces() {
+        
+        sectionsNames.removeAll()
         
         for i in 0..<allPlaces.count {
             let nameFirstLetter = String(describing: allPlaces[i].name.characters.first! )
@@ -216,11 +205,12 @@ extension SettingsViewController {
             }
         }
         
+        searchedSectionsNames = sectionsNames
         searchedPlacesInSections = placesInSections
     }
     
     func deleteAllPlaces() {
-        objects.removeAll()
+        allPlaces.removeAll()
         sectionsNames.removeAll()
         placesInSections.removeAll()
         RealmCRUD.shared.deleteAllPlaces()
