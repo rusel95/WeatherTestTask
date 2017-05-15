@@ -12,22 +12,24 @@ protocol SettingsViewControllerDelegate {
     func doSomething(with weather: WeatherResponse)
 }
 
-//struct tableData {
-//    var sections = [Character]()
-////    var itemsInsSections =
-//}
-
 class SettingsViewController: UITableViewController {
     
+    
+    //MARK: delegetions
     var delegate: SettingsViewControllerDelegate?
+    var weatherToGiveBack : WeatherResponse?
     
-    fileprivate var weatherToGiveBack : WeatherResponse?
-    fileprivate var objects = [Place]()
-    fileprivate let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
+    //MARK: stored properties
+    var objects = [Place]()
+    let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var dict = [ "" : [Place]() ]
     
     
+    //MARK: outlets/actions
+    @IBOutlet weak var searchBookmarks: UISearchBar!
+        
+    //MARK: init/deinit
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -44,6 +46,7 @@ class SettingsViewController: UITableViewController {
         print("deinit_SettingsViewController")
     }
     
+    //MARK: tableView overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
