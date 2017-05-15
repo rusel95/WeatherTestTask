@@ -35,7 +35,7 @@ class RealmCRUD {
         }
     }
     
-    func queryRealmPlacesToArray() -> [Place] {
+    func queryPlacesToArray() -> [Place] {
         
         var objects = [Place]()
         
@@ -52,7 +52,7 @@ class RealmCRUD {
         
         var exist = false
         
-        let places = self.queryRealmPlacesToArray()
+        let places = self.queryPlacesToArray()
         for place in places {
             if place.address == somePlace.address {
                 exist = true
@@ -63,17 +63,24 @@ class RealmCRUD {
         return exist
     }
     
-    func deleteRealmPlaces(placeToDelete: Place) -> Void {
+    func deletePlace(placeToDelete: Place) -> Void {
         
         let realm = try! Realm()
         
-        for place in queryRealmPlacesToArray() {
+        for place in queryPlacesToArray() {
             if place.address == placeToDelete.address {
                 try! realm.write {
                     realm.delete(place)
                 }
                 break
             }
+        }
+    }
+    
+    func deleteAllPlaces() -> Void {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
         }
     }
     

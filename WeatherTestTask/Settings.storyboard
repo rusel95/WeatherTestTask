@@ -19,16 +19,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="searched bookmarks" backgroundImage="launch1" id="8xh-0m-uN4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardAppearance="alert"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="60" id="dMG-zE-mJH" customClass="SettingsTableViewCell" customModule="WeatherTestTask" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dMG-zE-mJH" id="YHK-6U-99F">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2r-Yn-M9Q">
-                                            <rect key="frame" x="24" y="8" width="343" height="44"/>
+                                            <rect key="frame" x="32" y="8" width="335" height="44"/>
                                             <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                                             <color key="textColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -42,7 +54,7 @@
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="a2r-Yn-M9Q" firstAttribute="leading" secondItem="YHK-6U-99F" secondAttribute="leadingMargin" constant="16" id="9M8-lU-0cs"/>
+                                        <constraint firstItem="a2r-Yn-M9Q" firstAttribute="leading" secondItem="YHK-6U-99F" secondAttribute="leadingMargin" constant="24" id="9M8-lU-0cs"/>
                                         <constraint firstItem="JW5-rz-x1K" firstAttribute="trailing" secondItem="YHK-6U-99F" secondAttribute="trailingMargin" id="G6y-Ka-3ZE"/>
                                         <constraint firstItem="a2r-Yn-M9Q" firstAttribute="top" secondItem="YHK-6U-99F" secondAttribute="topMargin" id="M8j-gR-pMb"/>
                                         <constraint firstItem="a2r-Yn-M9Q" firstAttribute="bottom" secondItem="YHK-6U-99F" secondAttribute="bottomMargin" id="scH-UH-7SN"/>
@@ -68,10 +80,16 @@
                             <outlet property="delegate" destination="aR4-94-67X" id="Bhi-im-6TE"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBookmarks" destination="8xh-0m-uN4" id="ZSN-hi-7NW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-qV-OEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2557.5" y="153.16901408450704"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch1" width="640" height="1136"/>
+    </resources>
 </document>

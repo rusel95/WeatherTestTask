@@ -247,7 +247,8 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Current Weather" id="wra-jC-hLo">
                         <barButtonItem key="backBarButtonItem" title=" " id="NYh-x1-81w"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="Pii-Xp-Swj">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="search" id="Pii-Xp-Swj">
+                            <color key="tintColor" red="0.2784313725" green="0.47450980390000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="searchButton:" destination="zD2-Jn-cCS" id="fSa-Di-ntC"/>
                             </connections>
