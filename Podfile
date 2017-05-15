@@ -10,6 +10,7 @@ target 'WeatherTestTask' do
 	pod 'Alamofire'
 	pod 'AlamofireImage'
 	pod 'AlamofireObjectMapper'
-  pod 'GooglePlaces'
+	pod 'GoogleMaps’
+  	pod 'GooglePlaces'
 	pod ‘SwiftyJSON’
 end
