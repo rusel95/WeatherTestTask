@@ -48,8 +48,9 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Settings"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Delete All", style: .plain, target: self, action: #selector(deleteAllPlaces))
         
-        objects = RealmCRUD.shared.queryRealmPlacesToArray()
+        objects = RealmCRUD.shared.queryPlacesToArray()
         dict = getSectionsAndRows(at: objects)
     }
        
@@ -70,7 +71,7 @@ class SettingsViewController: UITableViewController {
         
         let neededKey = Array(dict.keys)[indexPath.section]
         
-        cell.cityNameOutlet.text = dict[neededKey]?[indexPath.row].address
+        cell.cityNameOutlet.text = dict[neededKey]?[indexPath.row].name
         
         return cell
     }
@@ -90,10 +91,7 @@ class SettingsViewController: UITableViewController {
                 tableView.deleteRows(at: [indexPath], with: .left)
             }
 
-            RealmCRUD.shared.deleteRealmPlaces(placeToDelete: neededPlace!)
-            //objects.remove(at: indexPath.row)
-            
-
+            RealmCRUD.shared.deletePlace(placeToDelete: neededPlace!)
         }
     }
     
@@ -144,6 +142,13 @@ extension SettingsViewController {
         }
         
         return tempDict
+    }
+    
+    func deleteAllPlaces() {
+        objects.removeAll()
+        dict.removeAll()
+        RealmCRUD.shared.deleteAllPlaces()
+        tableView.reloadData()
     }
     
 }

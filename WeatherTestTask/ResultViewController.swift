@@ -102,11 +102,11 @@ extension ResultViewController {
         
         defaultPlace.setPlace(name: "Dnipro", address: "Dnipropetrovska oblast", latitude: 48.4686, longitude: 35.0357)
         
-        if RealmCRUD.shared.queryRealmPlacesToArray().count == 0 {
+        if RealmCRUD.shared.queryPlacesToArray().count == 0 {
             getWeather(in: defaultPlace)
             setBackroundImage(with: defaultPlace)
         } else {
-            let lastPlace = RealmCRUD.shared.queryRealmPlacesToArray().last
+            let lastPlace = RealmCRUD.shared.queryPlacesToArray().last
             
             getWeather(in: lastPlace!)
             
