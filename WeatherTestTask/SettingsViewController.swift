@@ -99,6 +99,9 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
             } else if Array(filteredDict.keys).count > 1 {
                 filteredDict[neededKey]?.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
+                /////////////////////////////////////////
+//                let set : IndexSet = [indexPath.section]
+//                tableView.deleteSections(set, with: .right)
             }
 
             RealmCRUD.shared.deletePlace(placeToDelete: neededPlace!)
@@ -195,9 +198,16 @@ extension SettingsViewController {
     
     fileprivate func getSectionsAndRows(at allPlaces: [Place]) -> [ String : [Place] ] {
         
-        let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-        
         var tempDict = [ String : [Place] ]()
+        
+        var lettersArray = [String]()
+        for i in 0..<allPlaces.count {
+            let nameFirstLetter = String(describing: allPlaces[i].name.characters.first! )
+            if !lettersArray.contains(nameFirstLetter) {
+                lettersArray.append( nameFirstLetter )
+            }
+        }
+        lettersArray.sort()
         
         //every letter path through
         for letter in lettersArray {
@@ -207,20 +217,17 @@ extension SettingsViewController {
             for place in allPlaces {
                 
                 //check if the first letter of place is an iteration letter
-                let placeNameFirstCharacter = place.name.characters[place.name.startIndex]
-                if placeNameFirstCharacter == Character(letter) {
-                    
+                let placeNameFirstCharacter = String( describing: place.name.characters.first! )
+                if placeNameFirstCharacter == letter {
                     tempItemsInSection.append(place)
+                    print(place)
                 }
             }
-            
             if tempItemsInSection.count != 0 {
                 tempDict[letter] = tempItemsInSection
             }
+            print(tempDict)
         }
-        
-        print(tempDict)
-        
         return tempDict
     }
     
