@@ -22,7 +22,6 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     
     //MARK: stored properties
     var objects = [Place]()
-    let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var dict = [ "" : [Place]() ]
     var filteredDict = [ "" : [Place]() ]
     
@@ -179,6 +178,8 @@ extension SettingsViewController {
 extension SettingsViewController {
     
     fileprivate func getSectionsAndRows(at allPlaces: [Place]) -> [ String : [Place] ] {
+        
+        let lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         
         var tempDict = [ String : [Place] ]()
         
