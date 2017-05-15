@@ -49,15 +49,19 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         searchBookmarks.delegate = self
         
-        navigationItem.title = "Settings"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Delete All", style: .plain, target: self, action: #selector(deleteAllPlaces))
+        setNavBar()
         
         objects = RealmCRUD.shared.queryPlacesToArray()
         dict = getSectionsAndRows(at: objects)
         filteredDict = dict
+    }
+    
+    func setNavBar() {
+        navigationItem.title = "Bookmarks"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "trash1.png" ), style: .plain, target: self, action: #selector(deleteAllPlaces))
+
     }
        
     override func viewWillDisappear(_ animated: Bool) {
@@ -158,7 +162,7 @@ extension SettingsViewController {
                     tempDict[key] = dict[key]
                 }
             }
-            print(tempDict)
+            
             if tempDict.keys.count == 0 {
                 
                 let tempPlace = Place()
