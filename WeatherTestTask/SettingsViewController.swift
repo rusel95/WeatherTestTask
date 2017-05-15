@@ -32,7 +32,7 @@ class SettingsViewController: UITableViewController {
         print("Init_SettingsViewController")
     }
     
-    deinit {
+    deinit {   			
         print("deinit_SettingsViewController")
     }
     
