@@ -21,13 +21,17 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     
     
     //MARK: stored properties
-    var objects = [Place]()
-    var dict = [ "" : [Place]() ]
-    var filteredDict = [ "" : [Place]() ]
+    var allPlaces = [Place]()
+    
+    var sectionsNames = [String]()
+    var placesInSections = [[Place]]()
+    
+    var searchedSectionsNames = [String]()
+    var searchedPlacesInSections = [[Place]]()
     
     //MARK: outlets/actions
     @IBOutlet weak var searchBookmarks: UISearchBar!
-        
+    
     //MARK: init/deinit
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,7 +45,7 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
         print("Init_SettingsViewController")
     }
     
-    deinit {   			
+    deinit {
         print("deinit_SettingsViewController")
     }
     
@@ -53,17 +57,16 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
         
         setNavBar()
         
-        objects = RealmCRUD.shared.queryPlacesToArray()
-        dict = getSectionsAndRows(at: objects)
-        filteredDict = dict
+        allPlaces = RealmCRUD.shared.queryPlacesToArray()
+        getSectionsAndPlaces()
     }
     
     func setNavBar() {
         navigationItem.title = "Bookmarks"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "trash1.png" ), style: .plain, target: self, action: #selector(deleteAllPlaces))
-
+        
     }
-       
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if weatherToGiveBack != nil {
@@ -71,71 +74,45 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return searchedSectionsNames.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return searchedSectionsNames[section]
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let neededKey = Array(filteredDict.keys)[section]
-        return (filteredDict[neededKey]?.count)!
+        return searchedPlacesInSections[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
         
-        let neededKey = Array(filteredDict.keys)[indexPath.section]
-        
-        cell.cityNameOutlet.text = filteredDict[neededKey]?[indexPath.row].name
+        cell.cityNameOutlet.text = searchedPlacesInSections[indexPath.section][indexPath.row].name
         
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let neededKey = Array(filteredDict.keys)[indexPath.section]
-            let neededPlace = filteredDict[neededKey]?[indexPath.row]
+            let neededPlace = searchedPlacesInSections[indexPath.section][indexPath.row]
             
-            if Array(filteredDict.keys).count == 1 {
-                filteredDict.removeValue(forKey: neededKey)
-                let set : IndexSet = [indexPath.section]
-                tableView.deleteSections(set, with: .automatic)
-            } else if Array(filteredDict.keys).count > 1 {
-                filteredDict[neededKey]?.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .left)
-                /////////////////////////////////////////
-//                let set : IndexSet = [indexPath.section]
-//                tableView.deleteSections(set, with: .right)
-            }
-
-            RealmCRUD.shared.deletePlace(placeToDelete: neededPlace!)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            searchedPlacesInSections[indexPath.section].remove(at: indexPath.row)
+            
+            RealmCRUD.shared.deletePlace(placeToDelete: neededPlace)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let neededKey = Array(filteredDict.keys)[indexPath.section]
-        let neededPlace = filteredDict[neededKey]?[indexPath.row]
-        
-        getWeather(in: neededPlace!, from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return filteredDict.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(filteredDict.keys)[section]
+        let neededPlace = searchedPlacesInSections[indexPath.section][indexPath.row]
+        getWeather(in: neededPlace, from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        
-        var lettersArray : [String]?
-        if filteredDict["results: "] == nil {
-            var array = [String]()
-            for key in filteredDict.keys {
-                array.append(key)
-            }
-            lettersArray = array
-        }
-        
-        return lettersArray
+        return searchedSectionsNames.count > 1 ? searchedSectionsNames : nil
     }
     
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -148,91 +125,94 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
 extension SettingsViewController {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        filteredDict = filterDictWith(text: searchText)
+        searchFilter(text: searchText)
         tableView.reloadData()
     }
     
-    private func filterDictWith(text: String) -> [ String : [Place] ] {
+    private func searchFilter(text: String) {
         
-        var tempDict = [ String : [Place] ]()
         var searchResults = [Place]()
         
-        //if text in search bar exist
+        searchedPlacesInSections.removeAll()
+        searchedSectionsNames.removeAll()
+        
         if text != "" {
             
-            //path through all dict keys to fill tempDict
-            for key in dict.keys {
+            //path through all sections
+            for i in 0..<sectionsNames.count {
                 
                 //path through all places in section
-                let sectionPlaces = dict[key]
-                for place in sectionPlaces! {
-                    
-                    if place.name.contains(text.lowercased()) {
+                for place in placesInSections[i] {
+                    if place.name.lowercased().contains(text.lowercased()) {
                         searchResults.append(place)
                     }
                 }
             }
-            tempDict["results: "] = searchResults
-            if tempDict["results: "]?.count == 0 {
-                
-                let tempPlace = Place()
-                tempPlace.setPlace(name: "no results... please, try again", address: "", latitude: 0, longitude: 0)
-                var tempPlaceArray = [Place]()
-                tempPlaceArray.append(tempPlace)
-                tempDict[""] = tempPlaceArray
+            
+            if searchResults.count != 0 {
+                searchedPlacesInSections.append(searchResults)
+                searchedSectionsNames = ["results: "]
+            } else {
+                //if placesInSections.count == 0 {
+                    let tempPlace = Place()
+                    tempPlace.setPlace(name: "no results... please, try again", address: "", latitude: 0, longitude: 0)
+                    var tempPlaceArray = [Place]()
+                    tempPlaceArray.append(tempPlace)
+                    searchedPlacesInSections.append(tempPlaceArray)
+                    searchedSectionsNames = ["OoOops..."]
+                //}
             }
             
         } else {
-            tempDict = dict
+            getSectionsAndPlaces()
         }
         
-        return tempDict
     }
-
+    
 }
 
 
 //MARK: For sections
 extension SettingsViewController {
     
-    fileprivate func getSectionsAndRows(at allPlaces: [Place]) -> [ String : [Place] ] {
+    fileprivate func getSectionsAndPlaces() {
         
-        var tempDict = [ String : [Place] ]()
+        sectionsNames.removeAll()
         
-        var lettersArray = [String]()
         for i in 0..<allPlaces.count {
             let nameFirstLetter = String(describing: allPlaces[i].name.characters.first! )
-            if !lettersArray.contains(nameFirstLetter) {
-                lettersArray.append( nameFirstLetter )
+            if !sectionsNames.contains(nameFirstLetter) {
+                sectionsNames.append(nameFirstLetter)
             }
         }
-        lettersArray.sort()
+        sectionsNames.sort()
         
         //every letter path through
-        for letter in lettersArray {
+        for i in 0..<sectionsNames.count {
             
-            var tempItemsInSection = [Place]()
+            var tempPlacesInSection = [Place]()
             //every place path through
             for place in allPlaces {
                 
                 //check if the first letter of place is an iteration letter
                 let placeNameFirstCharacter = String( describing: place.name.characters.first! )
-                if placeNameFirstCharacter == letter {
-                    tempItemsInSection.append(place)
+                if placeNameFirstCharacter == sectionsNames[i] {
+                    tempPlacesInSection.append(place)
                 }
             }
-            if tempItemsInSection.count != 0 {
-                tempDict[letter] = tempItemsInSection
+            if tempPlacesInSection.count != 0 {
+                placesInSections.append(tempPlacesInSection)
             }
         }
-        return tempDict
+        
+        searchedSectionsNames = sectionsNames
+        searchedPlacesInSections = placesInSections
     }
     
     func deleteAllPlaces() {
-        objects.removeAll()
-        dict.removeAll()
-        filteredDict.removeAll()
+        allPlaces.removeAll()
+        sectionsNames.removeAll()
+        placesInSections.removeAll()
         RealmCRUD.shared.deleteAllPlaces()
         tableView.reloadData()
     }
