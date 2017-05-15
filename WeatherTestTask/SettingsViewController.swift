@@ -168,7 +168,7 @@ extension SettingsViewController {
                 let sectionPlaces = dict[key]
                 for place in sectionPlaces! {
                     
-                    if place.name.contains(text) {
+                    if place.name.contains(text.lowercased()) {
                         searchResults.append(place)
                     }
                 }
@@ -226,6 +226,7 @@ extension SettingsViewController {
             if tempItemsInSection.count != 0 {
                 tempDict[letter] = tempItemsInSection
             }
+            
             print(tempDict)
         }
         return tempDict
