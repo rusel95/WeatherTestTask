@@ -105,12 +105,12 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
                 }
             }
             searchedPlacesInSections[indexPath.section].remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .bottom)
+            tableView.deleteRows(at: [indexPath], with: .right)
             
             if searchedPlacesInSections[indexPath.section].count == 0 {
                 searchedPlacesInSections.remove(at: indexPath.section)
                 searchedSectionsNames.remove(at: indexPath.section)
-                tableView.deleteSections([indexPath.section], with: .top)
+                tableView.deleteSections([indexPath.section], with: .left)
             }
             
             RealmCRUD.shared.deletePlace(placeToDelete: neededPlace)
