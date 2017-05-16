@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsTableViewCell
-        
+
         cell.cityNameOutlet.text = searchedPlacesInSections[indexPath.section][indexPath.row].name
         
         return cell
@@ -96,16 +96,28 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             let neededPlace = searchedPlacesInSections[indexPath.section][indexPath.row]
             
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            for i in 0..<allPlaces.count {
+                if allPlaces[i] == neededPlace {
+                    allPlaces.remove(at: i)
+                    break
+                }
+            }
             searchedPlacesInSections[indexPath.section].remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .bottom)
+            
+            if searchedPlacesInSections[indexPath.section].count == 0 {
+                searchedPlacesInSections.remove(at: indexPath.section)
+                searchedSectionsNames.remove(at: indexPath.section)
+                tableView.deleteSections([indexPath.section], with: .top)
+            }
             
             RealmCRUD.shared.deletePlace(placeToDelete: neededPlace)
+            allPlaces = RealmCRUD.shared.queryPlacesToArray()
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let neededPlace = searchedPlacesInSections[indexPath.section][indexPath.row]
         getWeather(in: neededPlace, from: tableView.cellForRow(at: indexPath) as! SettingsTableViewCell)
@@ -120,57 +132,6 @@ class SettingsViewController: UITableViewController, UISearchBarDelegate {
     }
     
 }
-
-//MARK: Search Bar delegetion
-extension SettingsViewController {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchFilter(text: searchText)
-        tableView.reloadData()
-    }
-    
-    private func searchFilter(text: String) {
-        
-        var searchResults = [Place]()
-        
-        searchedPlacesInSections.removeAll()
-        searchedSectionsNames.removeAll()
-        
-        if text != "" {
-            
-            //path through all sections
-            for i in 0..<sectionsNames.count {
-                
-                //path through all places in section
-                for place in placesInSections[i] {
-                    if place.name.lowercased().contains(text.lowercased()) {
-                        searchResults.append(place)
-                    }
-                }
-            }
-            
-            if searchResults.count != 0 {
-                searchedPlacesInSections.append(searchResults)
-                searchedSectionsNames = ["results: "]
-            } else {
-                //if placesInSections.count == 0 {
-                    let tempPlace = Place()
-                    tempPlace.setPlace(name: "no results... please, try again", address: "", latitude: 0, longitude: 0)
-                    var tempPlaceArray = [Place]()
-                    tempPlaceArray.append(tempPlace)
-                    searchedPlacesInSections.append(tempPlaceArray)
-                    searchedSectionsNames = ["OoOops..."]
-                //}
-            }
-            
-        } else {
-            getSectionsAndPlaces()
-        }
-        
-    }
-    
-}
-
 
 //MARK: For sections
 extension SettingsViewController {
@@ -219,6 +180,54 @@ extension SettingsViewController {
     
 }
 
+//MARK: Search Bar delegetion
+extension SettingsViewController {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchFilter(text: searchText)
+        tableView.reloadData()
+    }
+    
+    private func searchFilter(text: String) {
+        
+        var searchResults = [Place]()
+        
+        searchedPlacesInSections.removeAll()
+        searchedSectionsNames.removeAll()
+        
+        if text != "" {
+            
+            //path through all sections
+            for i in 0..<sectionsNames.count {
+                
+                //path through all places in section
+                for place in placesInSections[i] {
+                    if place.name.lowercased().contains(text.lowercased()) {
+                        searchResults.append(place)
+                    }
+                }
+            }
+            
+            if searchResults.count != 0 {
+                searchedPlacesInSections.append(searchResults)
+                searchedSectionsNames = ["results: "]
+            } else {
+                let tempPlace = Place()
+                tempPlace.setPlace(name: "no results... please, try again", address: "", latitude: 0, longitude: 0)
+                var tempPlaceArray = [Place]()
+                tempPlaceArray.append(tempPlace)
+                searchedPlacesInSections.append(tempPlaceArray)
+                searchedSectionsNames = ["OoOops..."]
+                
+            }
+            
+        } else {
+            getSectionsAndPlaces()
+        }
+        
+    }
+    
+}
 
 //MARK: getting of weather
 extension SettingsViewController {
