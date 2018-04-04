@@ -65,6 +65,13 @@ extension Realm {
          - parameter migrationBlock:     The block which migrates the Realm to the current version.
          - parameter deleteRealmIfMigrationNeeded: If `true`, recreate the Realm file with the provided
                                                    schema if a migration is required.
+         - parameter shouldCompactOnLaunch: A block called when opening a Realm for the first time during the
+                                            life of a process to determine if it should be compacted before being
+                                            returned to the user. It is passed the total file size (data + free space)
+                                            and the total bytes used by data in the file.
+
+                                            Return `true ` to indicate that an attempt to compact the file should be made.
+                                            The compaction will be skipped if another process is accessing it.
          - parameter objectTypes:        The subset of `Object` subclasses persisted in the Realm.
         */
         public init(fileURL: URL? = URL(fileURLWithPath: RLMRealmPathForFile("default.realm"), isDirectory: false),
@@ -75,6 +82,7 @@ extension Realm {
                     schemaVersion: UInt64 = 0,
                     migrationBlock: MigrationBlock? = nil,
                     deleteRealmIfMigrationNeeded: Bool = false,
+                    shouldCompactOnLaunch: ((Int, Int) -> Bool)? = nil,
                     objectTypes: [Object.Type]? = nil) {
                 self.fileURL = fileURL
                 if let inMemoryIdentifier = inMemoryIdentifier {
@@ -88,6 +96,7 @@ extension Realm {
                 self.schemaVersion = schemaVersion
                 self.migrationBlock = migrationBlock
                 self.deleteRealmIfMigrationNeeded = deleteRealmIfMigrationNeeded
+                self.shouldCompactOnLaunch = shouldCompactOnLaunch
                 self.objectTypes = objectTypes
         }
 
@@ -169,13 +178,24 @@ extension Realm {
          */
         public var deleteRealmIfMigrationNeeded: Bool = false
 
+        /**
+         A block called when opening a Realm for the first time during the
+         life of a process to determine if it should be compacted before being
+         returned to the user. It is passed the total file size (data + free space)
+         and the total bytes used by data in the file.
+
+         Return `true ` to indicate that an attempt to compact the file should be made.
+         The compaction will be skipped if another process is accessing it.
+         */
+        public var shouldCompactOnLaunch: ((Int, Int) -> Bool)?
+
         /// The classes managed by the Realm.
         public var objectTypes: [Object.Type]? {
             set {
                 self.customSchema = newValue.map { RLMSchema(objectClasses: $0) }
             }
             get {
-                return self.customSchema.map { $0.objectSchema.map { $0.objectClass as! Object.Type } }
+                return self.customSchema.map { $0.objectSchema.flatMap { $0.objectClass as? Object.Type } }
             }
         }
 
@@ -203,7 +223,12 @@ extension Realm {
             configuration.schemaVersion = self.schemaVersion
             configuration.migrationBlock = self.migrationBlock.map { accessorMigrationBlock($0) }
             configuration.deleteRealmIfMigrationNeeded = self.deleteRealmIfMigrationNeeded
-            configuration.customSchema = self.customSchema
+            if let shouldCompactOnLaunch = self.shouldCompactOnLaunch {
+                configuration.shouldCompactOnLaunch = ObjectiveCSupport.convert(object: shouldCompactOnLaunch)
+            } else {
+                configuration.shouldCompactOnLaunch = nil
+            }
+            configuration.setCustomSchemaWithoutCopying(self.customSchema)
             configuration.disableFormatUpgrade = self.disableFormatUpgrade
             return configuration
         }
@@ -226,6 +251,7 @@ extension Realm {
                 }
             }
             configuration.deleteRealmIfMigrationNeeded = rlmConfiguration.deleteRealmIfMigrationNeeded
+            configuration.shouldCompactOnLaunch = rlmConfiguration.shouldCompactOnLaunch.map(ObjectiveCSupport.convert)
             configuration.customSchema = rlmConfiguration.customSchema
             configuration.disableFormatUpgrade = rlmConfiguration.disableFormatUpgrade
             return configuration
